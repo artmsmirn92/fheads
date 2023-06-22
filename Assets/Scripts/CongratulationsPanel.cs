@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class CongradulationsPanel : MonoBehaviour 
+public class CongratulationsPanel : MonoBehaviour 
 {
     [SerializeField]
 	private Scripts scr;
@@ -15,7 +15,7 @@ public class CongradulationsPanel : MonoBehaviour
 	public GameObject[] objsToDis;
 
    
-	public void CongradulationsPanelCall()
+	public void ShopPanel()
 	{
         if (TimeManager.resOfGame == 1)
         {
@@ -30,15 +30,14 @@ public class CongradulationsPanel : MonoBehaviour
         Enemy.gameStop = true;
 		scr.gM.MenuResultBack ();
 
-        scr.camSize.SetCameraPositionForCongrPan();
+        scr.camSize.SetCameraPositionForCongratulationPanel();
         scr.alPrScr.doCh = true;
 	}
 
 	public void DisableSomeObjects()
 	{
-		for (int i = 0; i < objsToDis.Length; i++)
-			objsToDis[i].SetActive(false);
-
+		foreach (var obj in objsToDis)
+			obj.SetActive(false);
 		scr.camSize.enabled = false;
 	}
 }

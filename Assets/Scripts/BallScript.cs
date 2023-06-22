@@ -182,7 +182,7 @@ public class BallScript : MonoBehaviour
         bY = transform.position.y;
         plX = scr.pMov.transform.position.x;
         plY = scr.pMov.transform.position.y;
-        cSize = scr.camSize._cam.orthographicSize;
+        cSize = scr.camSize.Camera.orthographicSize;
     }
 
 	/*private void EnemyArrow()

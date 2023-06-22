@@ -41,7 +41,7 @@ public class Scripts : MonoBehaviour
     public BallScript ballScr;
     public BallTouchScript ballTScr;
     public GroundTrigger1 grTr;
-    public CongradulationsPanel congrPan;
+    public CongratulationsPanel congrPan;
     public LevelAudioScript levAudScr;
     public StadiumChooseScript stChScr;
     public JumpScript jScr;
@@ -91,7 +91,7 @@ public class Scripts : MonoBehaviour
                 if (tM == null) tM = FindObjectOfType<TimeManager>();
                 if (ballScr == null) ballScr = FindObjectOfType<BallScript>();
                 if (grTr == null) grTr = FindObjectOfType<GroundTrigger1>();
-                if (congrPan == null) congrPan = FindObjectOfType<CongradulationsPanel>();
+                if (congrPan == null) congrPan = FindObjectOfType<CongratulationsPanel>();
                 if (levAudScr == null) levAudScr = FindObjectOfType<LevelAudioScript>();
                 if (stChScr == null) stChScr = FindObjectOfType<StadiumChooseScript>();
                 if (ballTScr == null) ballTScr = FindObjectOfType<BallTouchScript>();

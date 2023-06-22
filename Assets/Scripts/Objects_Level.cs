@@ -282,7 +282,7 @@ public class Objects_Level : MonoBehaviour
         scr.congrPan.anim_CongrPan.SetTrigger(Animator.StringToHash("call"));
         mainCanvas.enabled = true;
         controlsCanvas.enabled = false;
-        scr.congrPan.CongradulationsPanelCall();
+        scr.congrPan.ShopPanel();
         scr.congrPan.DisableSomeObjects();
         scr.monWin.SetMoneyWin();
     }
