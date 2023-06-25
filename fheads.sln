@@ -31,8 +31,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StompyRobot.SRF", "StompyRo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SA.Android.Editor", "SA.Android.Editor.csproj", "{f9b2135a-c749-9a85-e0dc-808e2dec7eca}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Play.Games", "Google.Play.Games.csproj", "{ddfcf17e-180f-8fec-3283-1967c876ce27}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zenject-UnitTests-Editor", "Zenject-UnitTests-Editor.csproj", "{f0e2ba91-eed8-5fe6-3b81-0b14ced74c42}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SA.Foundation", "SA.Foundation.csproj", "{f487dcf9-81bc-5963-250c-057fa8089480}"
@@ -53,8 +51,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor-firs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StansAssets.Plugins.Editor", "StansAssets.Plugins.Editor.csproj", "{37d99b06-1bf0-7544-70dd-116e4fcf69d2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Play.Games.Editor", "Google.Play.Games.Editor.csproj", "{3b63d9aa-9ea5-31a6-3be7-6401bd62b112}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{a42fa810-2712-9d29-8ca5-08d7cbb28256}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StansAssets.Foundation.Editor", "StansAssets.Foundation.Editor.csproj", "{62fb4261-dc70-064d-88e9-bcfc0614000b}"
@@ -73,8 +69,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreMountains.NiceVibration
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StompyRobot.SRF.Editor", "StompyRobot.SRF.Editor.csproj", "{e1b70742-df46-1767-9074-0771ace965ae}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMobileAds.Editor", "GoogleMobileAds.Editor.csproj", "{e72a6e1e-7757-04c8-d15b-341f431efb8d}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zenject-TestFramework", "Zenject-TestFramework.csproj", "{83de87ad-16a7-f41e-fde4-9d7ddbd82fae}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniIT.AdvertisingIdFetcher", "MiniIT.AdvertisingIdFetcher.csproj", "{18385f77-0b09-62af-9730-bf3c62fffed9}"
@@ -90,8 +84,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoreMountains.NiceVibrations", "MoreMountains.NiceVibrations.csproj", "{c67464b2-d63b-17e6-afef-459796f491f3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hierarchy2.Runtime", "Hierarchy2.Runtime.csproj", "{1eb93114-e122-224b-9654-1fa9ccef2bb1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirebaseMessagingActivityGenerator", "FirebaseMessagingActivityGenerator.csproj", "{1537768d-6151-b460-d918-d6e73e5f0c5c}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SA.Android.Manifest", "SA.Android.Manifest.csproj", "{7b5be314-18cf-f160-18bd-dbbf66c648c4}"
 EndProject
@@ -132,8 +124,6 @@ Global
 		{6a475443-b0dd-9a13-9680-1a3181ab9bcf}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{f9b2135a-c749-9a85-e0dc-808e2dec7eca}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{f9b2135a-c749-9a85-e0dc-808e2dec7eca}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ddfcf17e-180f-8fec-3283-1967c876ce27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ddfcf17e-180f-8fec-3283-1967c876ce27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{f0e2ba91-eed8-5fe6-3b81-0b14ced74c42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{f0e2ba91-eed8-5fe6-3b81-0b14ced74c42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{f487dcf9-81bc-5963-250c-057fa8089480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -154,8 +144,6 @@ Global
 		{a7cda3be-7b42-6c27-adee-e5c056bcd2ae}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37d99b06-1bf0-7544-70dd-116e4fcf69d2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{37d99b06-1bf0-7544-70dd-116e4fcf69d2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3b63d9aa-9ea5-31a6-3be7-6401bd62b112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3b63d9aa-9ea5-31a6-3be7-6401bd62b112}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{a42fa810-2712-9d29-8ca5-08d7cbb28256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{a42fa810-2712-9d29-8ca5-08d7cbb28256}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62fb4261-dc70-064d-88e9-bcfc0614000b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -174,8 +162,6 @@ Global
 		{60e1bd12-1195-4c94-0f24-242e1d40954e}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{e1b70742-df46-1767-9074-0771ace965ae}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{e1b70742-df46-1767-9074-0771ace965ae}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{e72a6e1e-7757-04c8-d15b-341f431efb8d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{e72a6e1e-7757-04c8-d15b-341f431efb8d}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83de87ad-16a7-f41e-fde4-9d7ddbd82fae}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{83de87ad-16a7-f41e-fde4-9d7ddbd82fae}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18385f77-0b09-62af-9730-bf3c62fffed9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -192,8 +178,6 @@ Global
 		{c67464b2-d63b-17e6-afef-459796f491f3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1eb93114-e122-224b-9654-1fa9ccef2bb1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1eb93114-e122-224b-9654-1fa9ccef2bb1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1537768d-6151-b460-d918-d6e73e5f0c5c}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1537768d-6151-b460-d918-d6e73e5f0c5c}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7b5be314-18cf-f160-18bd-dbbf66c648c4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7b5be314-18cf-f160-18bd-dbbf66c648c4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{c3615122-2609-700e-5e91-17f4a07ffd7e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
