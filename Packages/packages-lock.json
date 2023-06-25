@@ -8,7 +8,7 @@
       "hash": "b870d64b5704a764fd03aaccb11f2dbe652b1756"
     },
     "com.mazing.common": {
-      "version": "https://github.com/semi92art/mazing-common.git",
+      "version": "https://github.com/artmsmirn92/mazing-common.git",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -19,7 +19,7 @@
         "com.unity.modules.androidjni": "1.0.0",
         "com.unity.services.core": "1.8.2"
       },
-      "hash": "274e1de59842ea202e9743d94e7e77cab238aea2"
+      "hash": "107d2cc1490ec8f59ce90052c6eb9648f321823c"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
