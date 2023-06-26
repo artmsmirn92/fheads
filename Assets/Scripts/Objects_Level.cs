@@ -90,7 +90,7 @@ public class Objects_Level : MonoBehaviour
         else
         {
             int gameNum = scr.alPrScr.game + 1;
-            text_GameNum.text = "GAME " + gameNum.ToString();
+            text_GameNum.text = $"ИГРА {gameNum}";
             obj_RestartButon.SetActive(false);
             int _canRestart = PlayerPrefs.GetInt("CanRestart");
             scr.objLev.obj_RestartButon.SetActive(!CommonUtilsFheads.Int2Bool(_canRestart));
@@ -140,7 +140,7 @@ public class Objects_Level : MonoBehaviour
 
     void Start()
     {
-        DeactivateMenuesOnStart();
+        DeactivateMenusOnStart();
         //scr.levAudScr.EnableSound(1);
         startPanObjs.im_PlayerHead.sprite = scr.buf.plSpr;
         startPanObjs.im_PlayerLeg.sprite = scr.buf.plBoot;
@@ -153,20 +153,13 @@ public class Objects_Level : MonoBehaviour
         Destroy(scr.prMng.gameObject, 0.5f);
     }
 
-	private void DeactivateMenuesOnStart()
+	private void DeactivateMenusOnStart()
 	{
 		resultMenuAnim.gameObject.SetActive(false);
 		secondTimePanelAnim.gameObject.SetActive(false);
 	}
 
-	public void DestroyGameObject(GameObject obj)
-	{
-		#if UNITY_EDITOR
-		DestroyImmediate(obj);
-		#endif
-	}
-
-	public void SetControls_1()
+    public void SetControls_1()
 	{
 		scr.alPrScr.controls = 1;
 		scr.alPrScr.doCh = true;

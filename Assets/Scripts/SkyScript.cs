@@ -81,10 +81,10 @@ public class SkyScript : MonoBehaviour
         stad = scr.alPrScr.isRandGame == 0 ? scr.alPrScr.game : randStad;*/
         stadiumSprR.sprite = _tribunes[scr.alPrScr.tribunes].spr_tribunes;
 
-        int randC = Mathf.FloorToInt(((float)randCol.Length - 0.1f) * Random.value);
-
-        for (int i = 0; i < wallSprs.Length; i++)
-            wallSprs[i].color = randCol[randC];
+        // int randC = Mathf.FloorToInt(((float)randCol.Length - 0.1f) * Random.value);
+        //
+        // for (int i = 0; i < wallSprs.Length; i++)
+        //     wallSprs[i].color = randCol[randC];
     }
 
     public void SetWeather()

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -82,34 +80,25 @@ public class AllAwardsScript : MonoBehaviour
         allAwPan.SetActive(true);
         awPans[1].SetActive(true);
         pansActive[1] = 1;
-
-        if (scr.gM._menues == Menues.menuCareer)
+        if (scr.gM._menues != Menues.menuCareer) 
+            return;
+        if (scr.alPrScr.moneyCount >= scr.carMng.lg_cost[scr.carMng._lgPrev])
         {
-            if (scr.alPrScr.moneyCount >= scr.carMng.lg_cost[scr.carMng._lgPrev])
-            {
-                yesButObj.SetActive(true);
-                prevText.text = "Do you want to unlock this league for " +
-                    scr.univFunc.MoneyString(scr.carMng.lg_cost[scr.carMng._lgPrev]);
-            }
-            else
-            {
-                yesButObj.SetActive(false);
-                prevText.text = "You have not enough money to unlock this league. " +
-                    "You need " + scr.univFunc.MoneyString(scr.carMng.lg_cost[scr.carMng._lgPrev]);
-            }
+            yesButObj.SetActive(true);
+            prevText.text = "Вы хотите открыть эту лигу за " 
+                            + scr.univFunc.MoneyString(scr.carMng.lg_cost[scr.carMng._lgPrev]) 
+                            + "?";
+        }
+        else
+        {
+            yesButObj.SetActive(false);
+            prevText.text = "У Вас недостаточно денег, чтобы открыть эту лигу. "
+                            + " "
+                            + "Вам нужно " 
+                            + scr.univFunc.MoneyString(scr.carMng.lg_cost[scr.carMng._lgPrev]);
         }
     }
-
-    /// <summary>
-    /// Call review panel.
-    /// </summary>
-    public void CallAwardPanel_3()
-    {
-        allAwPan.SetActive(true);
-        awPans[2].SetActive(true);
-        pansActive[2] = 1;
-    }
-
+    
     public void YesButton_Preview()
     {
         switch (scr.gM._menues)

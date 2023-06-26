@@ -417,12 +417,12 @@ public class ProfileManager : MonoBehaviour
 		{
 			if (scr.alPrScr.moneyCount >= coast)
 			{
-                buyPlayerString = "Do you want to buy this head for " + scr.univFunc.MoneyString(coast) + "?";
+                buyPlayerString = "Вы хотите купить этого игрока за " + scr.univFunc.MoneyString(coast) + "?";
 				scr.allAw.yesButObj.SetActive(true);
 			} 
 			else
 			{
-                buyPlayerString = "You have not enough money on this player";
+                buyPlayerString = "Недостаточно денег для покупки игрока.";
                 scr.allAw.yesButObj.SetActive(false);
 			}
 
@@ -438,21 +438,7 @@ public class ProfileManager : MonoBehaviour
         if (scr.gM._menues != Menues.mainMenu)
             scr.objM.buttonsSource.Play();
 	}
-
-	public void SetPlayerShowcaseInProfile()
-	{
-        int ind = scr.alPrScr.playerIndex;
-        profShowcase[ind].GetComponent<Image>().color = scr.objM.col_Orange;
-	}
-
-    private string buyPlayerStr_1(bool isEnoughMoney)
-    {
-        string str0 = isEnoughMoney ? "Do you want to buy this head for " : 
-            "you have not enough money on this head";
-
-        return str0;
-    }
-
+    
     public void Preview_2(int ind)
     {
         previewPlayerLg = 2;
@@ -470,13 +456,13 @@ public class ProfileManager : MonoBehaviour
 
             if (scr.alPrScr.moneyCount >= coast)
             {
-                buyPlayerString = "Do you want to buy this head for " + scr.univFunc.MoneyString(coast) + "?";
+                buyPlayerString = "Вы хотите купить этого игрока за " + scr.univFunc.MoneyString(coast) + "?";
                 scr.allAw.yesButObj.SetActive(true);
             }
             else
             {
-                scr.allAw.noButTxt.text = "Back";
-                buyPlayerString = "You have not enough money on this player";
+                scr.allAw.noButTxt.text = "Назад";
+                buyPlayerString = "Недостаточно денег для покупки игрока.";
                 scr.allAw.yesButObj.SetActive(false);
             }
 

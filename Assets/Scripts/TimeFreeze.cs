@@ -37,7 +37,7 @@ public class TimeFreeze : MonoBehaviour
         if (timFr || isHandleUnlim) EnableUnlimitedFreeze();
 
         float freezeTime_1 = freezeTime / frTimeScale;
-        text_FreezeTime.text = freezeTime_1.ToString("N1") + "s";
+        text_FreezeTime.text = freezeTime_1.ToString("N1") + "c";
     }
 
     public void EnableUnlimitedFreeze()
@@ -61,7 +61,7 @@ public class TimeFreeze : MonoBehaviour
             freezeTime_2 = Mathf.RoundToInt(freezeTime_1 * 10f);
 
             if (freezeTime_2 != checkFreezeTime_2)
-                text_FreezeTime.text = freezeTime_1.ToString("N1") + "s";    
+                text_FreezeTime.text = freezeTime_1.ToString("N1") + "c";    
 
             if (freezeTime <= 0)
             {

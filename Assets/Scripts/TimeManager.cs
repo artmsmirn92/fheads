@@ -63,8 +63,8 @@ public class TimeManager : MonoBehaviour
 			1);
 
 		periodsOnBegin = matchPeriods;  
-        periodsText.text = "PERIOD " + "1/" + periodsOnBegin;
-        scr.objLev.secontTimePanelText.text = "END OF FIRST PERIOD";
+        periodsText.text = "ТАЙМ " + "1/" + periodsOnBegin;
+        scr.objLev.secontTimePanelText.text = "КОНЕЦ ПЕРВОГО ТАЙМА";
 
 	}
 
@@ -109,7 +109,7 @@ public class TimeManager : MonoBehaviour
         tim = 0;
         tim1 = 0;
         int currentPeriod = periodsOnBegin - matchPeriods + 1;
-        periodsText.text = "PERIOD " + currentPeriod + "/" + periodsOnBegin;
+        periodsText.text = "ТАЙМ " + currentPeriod + "/" + periodsOnBegin;
         scr.objLev.mainCanvas.enabled = false;
         scr.bonObjMan.WatchVideo(2);
     }
@@ -117,7 +117,7 @@ public class TimeManager : MonoBehaviour
 	private void SetNameOfCurrentPeriod()
 	{
 		//int currentPeriod = periodsOnBegin - matchPeriods + 1;
-        scr.objLev.secontTimePanelText.text = "START SECOND PERIOD";
+        scr.objLev.secontTimePanelText.text = "НАЧАЛО ВТОРОГО ТАЙМА";
 	}
         
 	void Update ()
@@ -274,13 +274,13 @@ public class TimeManager : MonoBehaviour
                             scr.alPrScr.doCh = true;  
                             scr.objLev.text_Result.gameObject.SetActive(false);
                             scr.objLev._anim_VictText.winState = 1;
-                            scr.objLev.text_Victory.text = "VICTORY";
+                            scr.objLev.text_Victory.text = "ПОБЕДА";
                             scr.fwScr.SetActiveWinFirework();
                         }
                         else
                         {
                             scr.objLev._anim_VictText.winState = 0;
-                            scr.objLev.text_Victory.text = "DEFEAT";
+                            scr.objLev.text_Victory.text = "ПОРАЖЕНИЕ";
                             scr.objLev.text_Result.gameObject.SetActive(true);
 
                             int _canRestart = PlayerPrefs.GetInt("CanRestart");
@@ -298,9 +298,9 @@ public class TimeManager : MonoBehaviour
                         scr.objLev.obj_RestartButon.SetActive(false);
 
                         if (resOfGame == 1)
-                            scr.objLev.text_Victory.text = "VICTORY";
+                            scr.objLev.text_Victory.text = "ПОБЕДА";
                         else
-                            scr.objLev.text_Victory.text = "DEFEAT";
+                            scr.objLev.text_Victory.text = "ПОРАЖЕНИЕ";
                     }
 
 

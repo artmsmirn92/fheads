@@ -3,7 +3,7 @@ using mazing.common.Runtime.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CameraSize : MonoBehaviour
+public class CameraScript : MonoBehaviour
 {
     #region constants
 
@@ -32,16 +32,16 @@ public class CameraSize : MonoBehaviour
 
     #region nonpublic members
     
-    private float     m_defY;
-    private Camera    m_cam;
-    private Transform m_followTr;
+    private float     m_DefY;
+    private Camera    m_Cam;
+    private Transform m_FollowTr;
     
-    private int     m_graph;
-    private Vector3 m_camDefRot;
-    private float   m_resMy0,      m_resMy01;
-    private float   m_leftCamEdge, m_rightCamEdge, m_topCamEdge;
-    private float   m_newAng0,     m_newAng;
-    private bool    m_isFromButton;
+    private int     m_Graph;
+    private Vector3 m_CamDefRot;
+    private float   m_ResMy0,      m_ResMy01;
+    private float   m_LeftCamEdge, m_RightCamEdge, m_TopCamEdge, m_BottomCamEdge;
+    private float   m_NewAng0,     m_NewAng;
+    private bool    m_IsFromButton;
 
     #endregion
 
@@ -49,19 +49,21 @@ public class CameraSize : MonoBehaviour
 
     private void Awake()
     {
+        SetCameraDefaultPosition();
+        scr.alPrScr._camera = 1;
         Camera = GetComponent<Camera>();
 
-        m_graph = PlayerPrefs.GetInt("Graph");
-        m_cam   = GetComponent<Camera>();
+        m_Graph = PlayerPrefs.GetInt("Graph");
+        m_Cam   = GetComponent<Camera>();
 
-        m_followTr = scr.pMov.transform;
-        m_resMy01 = GraphicUtils.AspectRatio;
-        m_resMy0   = 14f / 10f;
+        m_FollowTr = scr.pMov.transform;
+        m_ResMy01 = GraphicUtils.AspectRatio;
+        m_ResMy0   = 14f / 10f;
 
         SetCameraSize(scr.alPrScr._camera);
         SetGraphics(1);
 
-        m_camDefRot = transform.localRotation.eulerAngles;
+        m_CamDefRot = transform.localRotation.eulerAngles;
     }
 
     private void Update()
@@ -87,9 +89,9 @@ public class CameraSize : MonoBehaviour
     {
         if (_FromAwake == 0)
         {
-            m_graph = m_graph == 2 ? 0 : m_graph + 1;
-            PlayerPrefs.SetInt("Graph", m_graph);
-            int graph1 = Animator.StringToHash(m_graph.ToString());
+            m_Graph = m_Graph == 2 ? 0 : m_Graph + 1;
+            PlayerPrefs.SetInt("Graph", m_Graph);
+            int graph1 = Animator.StringToHash(m_Graph.ToString());
             rTr_Circle.GetComponent<Animator>().SetTrigger(graph1);
         }
         else
@@ -98,7 +100,7 @@ public class CameraSize : MonoBehaviour
                 0f,
                 rTr_Circle.anchoredPosition.y);
         }
-        SetGraphicsCore(m_graph);
+        SetGraphicsCore(m_Graph);
         if (scr.rainMan.isRain)
             scr.rainMan.SetRain_On();
     }
@@ -106,44 +108,26 @@ public class CameraSize : MonoBehaviour
     public void SetCameraDefaultPosition()
     {
         transform.position = camDefPos;
-        transform.rotation = Quaternion.Euler(m_camDefRot);
+        transform.rotation = Quaternion.Euler(m_CamDefRot);
     }
 
     public void SetCameraPositionForCongratulationPanel()
     {
         transform.SetPosX(-20f);
-        transform.rotation = Quaternion.Euler(m_camDefRot);
+        transform.rotation = Quaternion.Euler(m_CamDefRot);
     }
 
     public void SetCameraSize(int _Size)
     {
         for (int i = 0; i < obj_CamButtons.Length; i++)
             obj_CamButtons[i].SetActive(i == _Size);
-        float newY0 = 0f;
         switch (_Size)
         {
-            case 0:
-                newY0                  = 13.6f;
-                m_cam.orthographicSize = 28.42f;
-
-                m_leftCamEdge  = 27.78f  * m_resMy01 - 99.22f;
-                m_rightCamEdge = -27.78f * m_resMy01 + 59.17f;
-                break;
-            case 1:
-                newY0                  = 10.4f;
-                m_cam.orthographicSize = 25f;
-
-                m_leftCamEdge  = 25.56f  * m_resMy01 - 100.3f;
-                m_rightCamEdge = -25.56f * m_resMy01 + 60.3f;
-                m_topCamEdge   = 2.78f   * m_resMy01 + 12.28f;
-                break;
+            case 0: SetCameraSizeBig();   break;
+            case 1: SetCameraSizeSmall(); break;
         }
-
-        transform.SetPosY(newY0);
-        camDefPos = !m_isFromButton ? transform.position : new Vector3(camDefPos.x, newY0, camDefPos.z);
-
-        m_isFromButton = true;
-
+        SetCameraNewPositionY(m_BottomCamEdge);
+        m_IsFromButton      = true;
         scr.alPrScr._camera = _Size;
         scr.alPrScr.doCh    = true;
     }
@@ -151,6 +135,29 @@ public class CameraSize : MonoBehaviour
     #endregion
 
     #region nonpublic methods
+
+    private void SetCameraSizeBig()
+    {
+        m_Cam.orthographicSize = 28.42f;
+        m_LeftCamEdge  = 27.78f  * m_ResMy01 - 99.22f;
+        m_RightCamEdge = -27.78f * m_ResMy01 + 59.17f;
+        m_BottomCamEdge = 13.6f;
+    }
+
+    private void SetCameraSizeSmall()
+    {
+        m_Cam.orthographicSize = 25f;
+        m_LeftCamEdge  = 25.56f  * m_ResMy01 - 100.3f;
+        m_RightCamEdge = -25.56f * m_ResMy01 + 60.3f;
+        m_TopCamEdge   = 2.78f     * m_ResMy01 + 15f;
+        m_BottomCamEdge = 4.5f;
+    }
+
+    private void SetCameraNewPositionY(float _PosY)
+    {
+        transform.SetPosY(_PosY);
+        camDefPos = m_IsFromButton ? camDefPos.SetY(_PosY) : transform.position;
+    }
     
     private void CameraTransform()
     {
@@ -161,10 +168,10 @@ public class CameraSize : MonoBehaviour
 
     private float GetCameraPositionX()
     {
-        (Vector2 bPos, float camOrtSize) = (scr.ballScr.transform.position, m_cam.orthographicSize);
-        float newPosX = 0.5f * (m_followTr.position.x + bPos.x);
+        (Vector2 bPos, float camOrtSize) = (scr.ballScr.transform.position, m_Cam.orthographicSize);
+        float newPosX = 0.5f * (m_FollowTr.position.x + bPos.x);
         newPosX = Mathf.Clamp(newPosX, bPos.x - camOrtSize, bPos.x + camOrtSize);
-        newPosX = Mathf.Clamp(newPosX, m_leftCamEdge, m_rightCamEdge);
+        newPosX = Mathf.Clamp(newPosX, m_LeftCamEdge, m_RightCamEdge);
         newPosX = Mathf.Lerp(transform.position.x, newPosX, lerpX * Time.deltaTime);
         return newPosX;
     }
@@ -173,14 +180,14 @@ public class CameraSize : MonoBehaviour
     {
         float newPosY;
         if (scr.alPrScr._camera == 0)           //Big Camera
-            newPosY = -14.78f * m_resMy0 + 34.3f;
+            newPosY = -14.78f * m_ResMy0 + 34.3f;
         else                                    //Small Camera
         {
-            newPosY = 0.5f * (m_followTr.position.y + scr.ballScr.transform.position.y);
-            // newPosY = Mathf.Clamp(newPosY, 10f, m_topCamEdge);
-            newPosY = Mathf.Lerp(transform.position.y, newPosY, lerpX * Time.deltaTime * 5f);
+            newPosY = Mathf.Lerp(m_FollowTr.position.y, scr.ballScr.transform.position.y, 0.8f);
+            newPosY = Mathf.Clamp(newPosY, m_BottomCamEdge, m_TopCamEdge);
+            // newPosY = Mathf.Lerp(transform.position.y, newPosY, lerpX * Time.deltaTime * 5f);
         }
-        newPosY += CameraBottomOffset;
+        // newPosY += CameraBottomOffset;
         return newPosY;
     }
 
@@ -189,14 +196,14 @@ public class CameraSize : MonoBehaviour
         if (!scr.objLev.isTiltOn) 
             return;
         angCoeff = scr.objLev.isTiltOn ? 0.03f : 0f;
-        m_newAng   = scr.pMov._rb.velocity.x * angCoeff;
+        m_NewAng   = scr.pMov._rb.velocity.x * angCoeff;
 
         if (scr.pMov.transform.position.x > scr.marks.rightTiltEdgeTr.position.x ||
             scr.pMov.transform.position.x < scr.marks.leftTiltEdgeTr.position.x)
-            m_newAng = 0;
+            m_NewAng = 0;
 
         transform.rotation = Quaternion.AngleAxis(
-            m_newAng,
+            m_NewAng,
             Vector3.forward);
     }
     

@@ -73,16 +73,7 @@ public class Objects_Menu : MonoBehaviour
         currPrPan.SetActive (true);
         EnableSound(true);
     }
-
-    private void Start()
-    {
-        if (scr.alPrScr.pldG                  > 20 &&
-            PlayerPrefs.GetInt("Review_Done") == 0)
-        {
-            scr.allAw.CallAwardPanel_3();
-        }
-    }
-
+    
     #endregion
 
     #region api

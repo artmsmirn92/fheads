@@ -202,8 +202,6 @@ public class AllPrefsScript : MonoBehaviour
 
             if (LeanInput.GetDown(KeyCode.Alpha1))
                 scr.allAw.CallAwardPanel_1();
-            else if (LeanInput.GetDown(KeyCode.Alpha2))
-                scr.allAw.CallAwardPanel_3(); 
 
             if (LeanInput.GetDown(KeyCode.C))
                 System.GC.Collect();
@@ -329,7 +327,7 @@ public class AllPrefsScript : MonoBehaviour
             opndLeagues[i] = PlayerPrefs.GetInt(str);
         }
 
-        _camera = PlayerPrefs.GetInt("Camera");
+        // _camera = PlayerPrefs.GetInt("Camera");
         upgrSpeed = PlayerPrefs.GetInt("UpgradeSpeed");
         upgrKick = PlayerPrefs.GetInt("UpgradeKick");
         upgrJump = PlayerPrefs.GetInt("UpgradeJump");

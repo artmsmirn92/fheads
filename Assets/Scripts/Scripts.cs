@@ -32,7 +32,7 @@ public class Scripts : MonoBehaviour
     public Objects_Level objLev;
     public Enemy enAlg, enAlg_1;
     public MoneyWinScript monWin;
-    public CameraSize camSize;
+    public CameraScript camSize;
     public Markers marks;
     public GoalPanelScript goalPanScr;
     public Score scoreScr;
@@ -82,7 +82,7 @@ public class Scripts : MonoBehaviour
                 if (bonObjMan == null) bonObjMan = FindObjectOfType<BonusObjManager>();
                 if (enOrDis == null) enOrDis = FindObjectOfType<EnableOrDisable>();
                 if (monWin == null) monWin = FindObjectOfType<MoneyWinScript>();
-                if (camSize == null) camSize = FindObjectOfType<CameraSize>();
+                if (camSize == null) camSize = FindObjectOfType<CameraScript>();
                 if (marks == null) marks = FindObjectOfType<Markers>();
                 if (goalPanScr == null) goalPanScr = FindObjectOfType<GoalPanelScript>();
                 if (objLev == null) objLev = FindObjectOfType<Objects_Level>();
