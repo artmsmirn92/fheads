@@ -103,7 +103,7 @@ public class TimeManager : MonoBehaviour
         scr.objLev.secondTimePanelAnim.SetTrigger(Animator.StringToHash("back"));
         scr.objLev.secondTimePanelAnim.gameObject.SetActive(false);
         Time.timeScale = scr.gM.currTimeScale;
-        scr.timFr.isFreeze = false;
+        scr.timFr.IsFreezeActive = false;
         time0 = beginTime + 1;
         scr.pMov.restart = true;
         tim = 0;
@@ -117,7 +117,7 @@ public class TimeManager : MonoBehaviour
 	private void SetNameOfCurrentPeriod()
 	{
 		//int currentPeriod = periodsOnBegin - matchPeriods + 1;
-        scr.objLev.secontTimePanelText.text = "НАЧАЛО ВТОРОГО ТАЙМА";
+        scr.objLev.secontTimePanelText.text = "НАЧАТЬ ВТОРОГО ТАЙМ";
 	}
         
 	void Update ()

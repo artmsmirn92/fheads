@@ -1,4 +1,5 @@
 ﻿using Lean.Common;
+using mazing.common.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -170,18 +171,13 @@ public class AllPrefsScript : MonoBehaviour
     private void ViewWonGames()
     {
         for (int j = 0; j < 6; j++)
-        {
             for (int i = 0; i < 10; i++)
-            {
-                Debug.Log("Game " + i.ToString() + 
-                    ", League " + j.ToString() + 
-                    ", Win = " + wonGames[i, j]);
-            }
-        }
+	            Dbg.Log($"Game {i}, League {j}, Win = {wonGames[i, j]}");
     }
 
 	private void InputFcn()
 	{
+#if UNITY_EDITOR
         if (SceneManager.GetActiveScene ().buildIndex == 1) 
 		{
 			if (LeanInput.GetDown(KeyCode.P))
@@ -232,6 +228,7 @@ public class AllPrefsScript : MonoBehaviour
             else if (LeanInput.GetDown(KeyCode.X))
                 scr.molnia.Lightnin_OnOff();
         }
+#endif
 	}
         
 	private void SetValues()

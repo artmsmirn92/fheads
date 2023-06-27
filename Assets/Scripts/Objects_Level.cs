@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using mazing.common.Runtime.Extensions;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -76,7 +77,7 @@ public class Objects_Level : MonoBehaviour
 
     [Header("Start Panel Objects:")]
     public StartPanelObjects startPanObjs;
-    private float cap_val;
+    private float m_CapacityValue;
 
 
 	void Awake()
@@ -128,7 +129,7 @@ public class Objects_Level : MonoBehaviour
 		mainCanvas.enabled = true;
 		controlsCanvas.enabled = true;
 		quitPanel.SetActive (false);
-        quitText.text = "You will lose this game.\nContinue?";
+        quitText.text = "Вы проиграете эту игру.\nПродолжить?";
                 
         obj_BK_But1.SetActive(
             CommonUtilsFheads.Int2Bool(
@@ -147,9 +148,8 @@ public class Objects_Level : MonoBehaviour
         startPanObjs.im_EnemyHead_1.sprite = scr.buf.enSpr;
         startPanObjs.im_EnemyLeg_1.sprite = scr.buf.enBoot;
 
-        int _trigger = scr.buf.is2Enemies ? 
-            Animator.StringToHash("1") : Animator.StringToHash("0");
-        startPanelAnim.SetTrigger(_trigger);
+        int trigger = Animator.StringToHash(scr.buf.is2Enemies ? "1" : "0");
+        startPanelAnim.SetTrigger(trigger);
         Destroy(scr.prMng.gameObject, 0.5f);
     }
 
@@ -190,16 +190,16 @@ public class Objects_Level : MonoBehaviour
         pauseMenuAnim.SetTrigger(Animator.StringToHash("back"));
     }
 
-    public void EnableTilt(int isAwake)
+    public void EnableTilt(int _IsAwake)
     {
-        isTiltOn = isAwake == 1 ? isTiltOn : !isTiltOn;
-        int isTiltOn_int = isTiltOn ? 1 : 0;
+        isTiltOn = _IsAwake == 1 ? isTiltOn : !isTiltOn;
+        int tiltOnInt = isTiltOn ? 1 : 0;
 
         anim_TiltOn.SetTrigger(
-            Animator.StringToHash(isAwake.ToString() + isTiltOn_int.ToString()));
+            Animator.StringToHash(_IsAwake + tiltOnInt.ToString()));
 
-        if (isAwake == 0)
-            PlayerPrefs.SetInt("Tilt", isTiltOn_int);
+        if (_IsAwake == 0)
+            PlayerPrefs.SetInt("Tilt", tiltOnInt);
     }
 
     public void ButtonsSize(int _size)
@@ -209,38 +209,25 @@ public class Objects_Level : MonoBehaviour
         else
             PlayerPrefs.SetInt("ButtonsSize", _size);
 
-        for (int i = 0; i < im_ButSize.Length; i++)
-            im_ButSize[i].enabled = false;
-        
+        foreach (var image in im_ButSize)
+            image.enabled = false;
+
         im_ButSize[_size].enabled = true;
         SetButtonSize(_size);
     }
 
-    private float RealCapacityValue(float cap_val)
-    {
-        //float new_cap_val = cap_val * 0.9f + 0.1f;
-        float new_cap_val = cap_val;
-        return new_cap_val;
-    }
-
     public void Buttons_Capacity()
     {
-        cap_val = scrBar_ButtCap.value;
-        PlayerPrefs.SetFloat("ButtonsCapacity", cap_val);
-
-        for (int i = 0; i < im_ContrButtons.Length; i++)
-        {
-            im_ContrButtons[i].color = new Color(
-                im_ContrButtons[i].color.r,
-                im_ContrButtons[i].color.g,
-                im_ContrButtons[i].color.b,
-                RealCapacityValue(cap_val));
-        }
+        m_CapacityValue = scrBar_ButtCap.value;
+        PlayerPrefs.SetFloat("ButtonsCapacity", m_CapacityValue);
+        foreach (var buttonIm in im_ContrButtons)
+            buttonIm.color = buttonIm.color.SetA(m_CapacityValue);
+        scr.timFr.text_FreezeTime.color = scr.timFr.text_FreezeTime.color.SetA(m_CapacityValue);
     }
 
-    private void SetButtonSize(int _size)
+    private void SetButtonSize(int _Size)
     {
-        switch (_size)
+        switch (_Size)
         {
             case 0:
                 tr_Controls_1.anchoredPosition = new Vector2(170f, 82f);

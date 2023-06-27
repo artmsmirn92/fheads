@@ -1,5 +1,8 @@
-﻿using Lean.Common;
+﻿using System.Linq;
+using Lean.Common;
+using mazing.common.Runtime.Extensions;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour 
@@ -542,73 +545,60 @@ public class PlayerMovement : MonoBehaviour
 	{
 		kick1 = false;
 	}
-		
+
+	private static void ExecuteKeyUpDownAction(
+		UnityAction      _AnyKeyDownAction,
+		UnityAction      _AnyKeyUpAction,
+		params KeyCode[] _KeyCodes)
+	{
+		if (_KeyCodes.Any(LeanInput.GetDown))
+			_AnyKeyDownAction?.Invoke();
+		if (_KeyCodes.Any(LeanInput.GetUp))
+			_AnyKeyUpAction?.Invoke();
+	}
+	
+
 	private void Controls()
 	{
-		#if UNITY_EDITOR || UNITY_STANDALONE
-		if (LeanInput.GetDown (KeyCode.LeftArrow))
-			MoveLeft();
-		else if (LeanInput.GetUp (KeyCode.LeftArrow))
-			MoveLeftEnd ();
-
-		if (LeanInput.GetDown (KeyCode.RightArrow)) 
-			MoveRight ();
-		else if (LeanInput.GetUp (KeyCode.RightArrow)) 
-			MoveRightEnd ();
-
-		if (LeanInput.GetDown (KeyCode.UpArrow)) 
-			Jump ();
-		else if (LeanInput.GetUp (KeyCode.UpArrow))
-			JumpEnd ();
-
-		if (LeanInput.GetDown (KeyCode.LeftControl)) 
-			Kick ();
-		else if (LeanInput.GetUp (KeyCode.LeftControl)) 
-			KickEnd ();
-
-		if (LeanInput.GetDown (KeyCode.RightControl)) 
-			Kick ();
-		else if (LeanInput.GetUp (KeyCode.RightControl)) 
-			KickEnd ();
-
+#if UNITY_EDITOR || UNITY_STANDALONE
+		ExecuteKeyUpDownAction(MoveLeft,     MoveLeftEnd,     KeyCode.A,           KeyCode.LeftArrow);
+		ExecuteKeyUpDownAction(MoveRight,    MoveRightEnd,    KeyCode.D,           KeyCode.RightArrow);
+		ExecuteKeyUpDownAction(Jump,         JumpEnd,         KeyCode.W,           KeyCode.UpArrow);
+		ExecuteKeyUpDownAction(Kick,         KickEnd,         KeyCode.LeftControl, KeyCode.RightControl);
+		ExecuteKeyUpDownAction(KickOverHead, KickOverHeadEnd, KeyCode.LeftShift,   KeyCode.RightShift);
+		
+		ExecuteKeyUpDownAction(scr.timFr.TimeFreeze_StartOrStop, null, KeyCode.V);
+#endif
+		
+#if UNITY_EDITOR
 		if (LeanInput.GetDown (KeyCode.R))
-            scr.objLev.LevelRestartInLevel();
-
-		if (LeanInput.GetDown (KeyCode.W))
+			scr.objLev.LevelRestartInLevel();
+		if (LeanInput.GetDown (KeyCode.Y))
 		{
 			scr.gM.WinGame1();
 			scr.tM.matchPeriods = 1;
 		}
-
 		if (LeanInput.GetDown (KeyCode.L))
 		{
 			scr.gM.LooseGame();
 			scr.tM.matchPeriods = 1;
 		}
-
 		if (LeanInput.GetDown (KeyCode.T)) 
 		{
 			scr.gM.TieGame();
 			scr.tM.matchPeriods = 1;
 		}
-
 		if (LeanInput.GetDown(KeyCode.Alpha2))
 		{
 			Score.score++;
 			scr.scoreScr.SetScore();
 		}
-
 		if (LeanInput.GetDown(KeyCode.Alpha1)) 
 		{
 			Score.score1++;
 			scr.scoreScr.SetScore();
 		}
-
-        if (LeanInput.GetDown (KeyCode.LeftShift))
-            KickOverHead();
-        else if (LeanInput.GetUp (KeyCode.LeftShift))
-            KickOverHeadEnd();
-		#endif
+#endif
 	}
 
     public void KickOverHead()
@@ -625,36 +615,27 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public bool kOvH;
     private float kOvHTorque;
-   
 
     private void KickOverHeadFcn()
     {
+	    var localScale = transform.localScale;
         if (kOvH)
         {
             col_CircSlide.enabled = false;
             col_EdgeSlide.enabled = false;
-
             tr_GeneralLeg.localPosition = new Vector3 (genTr_x, genTr_y, 0f);
             tr_GeneralLeg.localRotation = Quaternion.Euler (0f, 0f, genTr_rot);
-
             scr.pMov._rb.freezeRotation = false;
             timH += Time.deltaTime;
-
-            transform.localScale = new Vector3(
-                -Mathf.Abs(transform.localScale.x),
-                transform.localScale.y,
-                transform.localScale.z);
-
+            localScale = localScale.SetX(-Mathf.Abs(transform.localScale.x));
             kOvHTorque = timH < torqTime ? kickOvHTorq_0 : kOvHTorque / 2f;
             scr.pMov._rb.AddTorque(kOvHTorque);
-
             if (scr.grTr.isPlayerGrounded)
             {
                 jump = true;
-                kOvH = timH > torqTime ? false : true;
+                kOvH = timH < torqTime;
             }
-
-            JointAngleLimits2D limits = HJPlayerLeg.limits;
+            var limits = HJPlayerLeg.limits;
             limits.min = timH < timOvH ? 179f : 90f;
             limits.max = timH < timOvH ? 180f : 91f;
             HJPlayerLeg.limits = limits;
@@ -663,21 +644,15 @@ public class PlayerMovement : MonoBehaviour
         {
             col_CircSlide.enabled = true;
             col_EdgeSlide.enabled = true;
-
             tr_GeneralLeg.localPosition = new Vector3 (0f, 0f, 0f);
             tr_GeneralLeg.localRotation = Quaternion.Euler (0f, 0f, 0f);
-
-            timH = 0.0f;
+            timH = .0f;
             kOvHTorque = kickOvHTorq_0;
             scr.pMov._rb.freezeRotation = true;
             scr.pMov.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-            transform.localScale = new Vector3(
-                Mathf.Abs(transform.localScale.x),
-                transform.localScale.y,
-                transform.localScale.z);
+            localScale = localScale.SetX(Mathf.Abs(transform.localScale.x));
         }
-
+        transform.localScale = localScale;
         jumpForce = kOvH ? jumpForceDef * 0.85f : jumpForceDef;
     }
 }

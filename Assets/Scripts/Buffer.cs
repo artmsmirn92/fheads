@@ -156,9 +156,6 @@ public class Buffer : MonoBehaviour
                 scr.alPrScr.openedPlayers.Length : scr.alPrScr.openedPlayers_2.Length;
             _ind = Mathf.FloorToInt(((float)max_ind - 0.1f) * Random.value);
         }
-
-        Debug.Log("League = " + _lg + ", Index = " + _ind);
-
         if (_num == 0)
         {
             switch (_lg)

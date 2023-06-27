@@ -75,6 +75,16 @@ public class Upgrades : MonoBehaviour
 
     #endregion
 
+    #region engien methods
+
+    private void Awake()
+    {
+        PlayerPrefs.SetInt("BycicleKick", 1);
+        rect_BK_But.gameObject.SetActive(false);
+    }
+
+    #endregion
+
     private void BuyAndUpgradeSkillItem(ref int _Item)
     {
         scr.alPrScr.moneyCount -= prices_Speed[_Item];
@@ -88,12 +98,13 @@ public class Upgrades : MonoBehaviour
         switch (curr_ind)
         {
             case 0: BuyAndUpgradeSkillItem(ref scr.alPrScr.upgrSpeed);    break;
-            case 1 when !isBK_Chosen: BuyAndUpgradeSkillItem(ref scr.alPrScr.upgrKick);
-                break;
-            case 1 when isBK_Chosen:
-                PlayerPrefs.SetInt("BycicleKick", 1);
-                scr.alPrScr.moneyCount -= bkPrice;
-                break;
+            // case 1 when !isBK_Chosen: BuyAndUpgradeSkillItem(ref scr.alPrScr.upgrKick);
+            //     break;
+            // case 1 when isBK_Chosen:
+            //     PlayerPrefs.SetInt("BycicleKick", 1);
+            //     scr.alPrScr.moneyCount -= bkPrice;
+            //     break;
+            case 1: BuyAndUpgradeSkillItem(ref scr.alPrScr.upgrKick);     break;
             case 2: BuyAndUpgradeSkillItem(ref scr.alPrScr.upgrJump);     break;
             case 3: BuyAndUpgradeSkillItem(ref scr.alPrScr.upgrSlowdown); break;
             case 4: BuyAndUpgradeSkillItem(ref scr.alPrScr.upgrShield);   break;
@@ -195,15 +206,15 @@ public class Upgrades : MonoBehaviour
             {
                 im_UpgradeBig.gameObject.SetActive(false);
                 rect_K_But.gameObject.SetActive(true);
-                rect_BK_But.gameObject.SetActive(true);
-                rect_K_But.sizeDelta = new Vector2(200, 200);
-                rect_BK_But.sizeDelta = new Vector2(170, 170);
+                // rect_BK_But.gameObject.SetActive(true);
+                // rect_K_But.sizeDelta = new Vector2(200, 200);
+                // rect_BK_But.sizeDelta = new Vector2(170, 170);
             }
             else
             {
                 im_UpgradeBig.gameObject.SetActive(true);
                 rect_K_But.gameObject.SetActive(false);
-                rect_BK_But.gameObject.SetActive(false);
+                // rect_BK_But.gameObject.SetActive(false);
             }
         }
 
@@ -546,8 +557,8 @@ public class Upgrades : MonoBehaviour
 
                 isBK_Chosen = true;
 
-                rect_K_But.sizeDelta = new Vector2(170, 170);
-                rect_BK_But.sizeDelta = new Vector2(200, 200);
+                // rect_K_But.sizeDelta = new Vector2(170, 170);
+                // rect_BK_But.sizeDelta = new Vector2(200, 200);
                 text_UpgrDescription.text = "Удар через себя";
                 text_Percent.alignment = TextAnchor.UpperLeft;
                 text_Percent.text = str_BK;
