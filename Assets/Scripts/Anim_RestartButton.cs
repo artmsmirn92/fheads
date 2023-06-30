@@ -18,15 +18,15 @@ public class Anim_RestartButton : MonoBehaviour
         switch (_int)
         {
             case 0:
-                text_Restart.text = "RESTART";
+                text_Restart.text = "РЕСТАРТ";
                 text_WatchVideo.enabled = true;
                 break;
             case 1:
-                text_Restart.text = "VIDEO IS\nNOT READY";
+                text_Restart.text = "РЕКЛАМА ЕЩЕ\nНЕ ЗАГРУЗИЛАСЬ";
                 text_WatchVideo.enabled = false;
                 break;
             case 2:
-                text_Restart.text = "VIDEO IS\nUNAVAILABLE";
+                text_Restart.text = "РЕКЛАМА \nНЕДОСТУПНА";
                 text_WatchVideo.enabled = false;
                 break;
         }

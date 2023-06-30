@@ -10257,7 +10257,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106102675}
-  m_Text: goal!!!   goal!!!
+  m_Text: "\u0433\u043E\u043B!!! \u0433\u043E\u043B!!! \u0433\u043E\u043B!!!"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -37276,12 +37276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scr: {fileID: 82947578}
-  quitPanel: 0
   pauseInLevel: 0
   gamePaused: 0
-  isNoAds: 0
-  _menues: 0
-  currTimeScale: 0
 --- !u!4 &668244411
 Transform:
   m_ObjectHideFlags: 0
@@ -37982,7 +37978,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703879746}
-  m_Text: goal!!!   goal!!!
+  m_Text: "\u0433\u043E\u043B!!! \u0433\u043E\u043B!!! \u0433\u043E\u043B!!!"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -42956,7 +42952,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 951351230}
-  m_Text: battle game
+  m_Text: "\u0431\u0430\u0442\u0442\u043B\u044B"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -43684,7 +43680,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987100736}
-  m_Text: battle game
+  m_Text: "\u0431\u0430\u0442\u0442\u043B\u044B"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -44890,7 +44886,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030617810}
-  m_Text: football heads
+  m_Text: "\u0444\u0443\u0442\u0431\u043E\u043B \u0433\u043E\u043B\u043E\u0432\u0430\u043C\u0438"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -49604,7 +49600,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281959612}
-  m_Text: goal!!!   goal!!!
+  m_Text: "\u0433\u043E\u043B!!! \u0433\u043E\u043B!!! \u0433\u043E\u043B!!!"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -49889,7 +49885,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1300958890}
-  m_Text: goal!!!   goal!!!
+  m_Text: "\u0433\u043E\u043B!!! \u0433\u043E\u043B!!! \u0433\u043E\u043B!!!"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -63361,7 +63357,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493344197}
-  m_Text: goal!!!   goal!!!
+  m_Text: "\u0433\u043E\u043B!!! \u0433\u043E\u043B!!! \u0433\u043E\u043B!!!"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -65204,7 +65200,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561968747}
-  m_Text: football heads
+  m_Text: "\u0444\u0443\u0442\u0431\u043E\u043B \u0433\u043E\u043B\u043E\u0432\u0430\u043C\u0438"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -65301,7 +65297,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565975778}
-  m_Text: goal!!!   goal!!!
+  m_Text: "\u0433\u043E\u043B!!! \u0433\u043E\u043B!!! \u0433\u043E\u043B!!!"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -67072,7 +67068,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628974265}
-  m_Text: football heads
+  m_Text: "\u0444\u0443\u0442\u0431\u043E\u043B \u0433\u043E\u043B\u043E\u0432\u0430\u043C\u0438"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -71884,7 +71880,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1893512717}
-  m_Text: battle game
+  m_Text: "\u0431\u0430\u0442\u0442\u043B\u044B"
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1

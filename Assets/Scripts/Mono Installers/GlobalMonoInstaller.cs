@@ -1,11 +1,14 @@
 ﻿using Common;
 using Common.Helpers;
+using Common.Managers;
 using Common.Managers.Advertising;
 using Common.Managers.Advertising.AdBlocks;
 using Common.Managers.Advertising.AdsProviders;
 using Common.Managers.Analytics;
+using Common.Managers.IAP;
 using mazing.common.Runtime.Helpers;
 using mazing.common.Runtime.Managers;
+using mazing.common.Runtime.Managers.IAP;
 using mazing.common.Runtime.Network;
 using mazing.common.Runtime.Ticker;
 using RMAZOR.Helpers;
@@ -38,8 +41,10 @@ namespace Mono_Installers
             var managerType = Application.isEditor ? typeof(AnalyticsManagerFake) : typeof(AnalyticsManager);
             Container.Bind<IAnalyticsManager>().To(managerType).AsSingle();
             Container.Bind<IAnalyticsProvidersSet>().To<AnalyticsProvidersSet>().AsSingle();
-            Container.Bind<IUnityAnalyticsProvider>().To<UnityAnalyticsProvider>().AsSingle();
-            Container.Bind<IMyOwnAnalyticsProvider>().To<MyOwnAnalyticsProvider>().AsSingle();
+            // Container.Bind<IUnityAnalyticsProvider>().To<UnityAnalyticsProvider>().AsSingle();
+            Container.Bind<IUnityAnalyticsProvider>().To<UnityAnalyticsProviderFake>().AsSingle();
+            // Container.Bind<IMyOwnAnalyticsProvider>().To<MyOwnAnalyticsProvider>().AsSingle();
+            Container.Bind<IMyOwnAnalyticsProvider>().To<MyOwnAnalyticsProviderFake>().AsSingle();
 #if FIREBASE && !UNITY_WEBGL
             Container.Bind<IFirebaseAnalyticsProvider>().To<FirebaseAnalyticsProvider>().AsSingle();
 #endif
@@ -98,6 +103,12 @@ namespace Mono_Installers
             Container.Bind<IFirebaseInitializer>().To<FirebaseInitializer>().AsSingle();
 #elif FIREBASE && UNITY_WEBGL
 
+#endif
+
+#if YANDEX_GAMES
+            Container.Bind<IShopManager>().To<YandexGameIapShopManager>().AsSingle();
+#else
+            Container.Bind<IShopManager>().To<ShopManagerFake>().AsSingle();
 #endif
         }
     }

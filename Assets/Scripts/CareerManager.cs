@@ -109,9 +109,9 @@ public class CareerManager : MonoBehaviour
 
     }
 
-    public void LoadTournament (int _lg)
+    public static void LoadTournament (int _lg)
     {
-        scr.gM.LoadSimpleLevel();
+        GameManager.LoadSimpleLevel();
     }
 
     private void SetLeagueData(int _lg)

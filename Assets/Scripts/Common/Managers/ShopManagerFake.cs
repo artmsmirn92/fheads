@@ -68,7 +68,7 @@ namespace Common.Managers
             {PurchaseKeys.CharacterColorSet12, new IAP_ProductInfo().Create(400m, "RUB 400", "RUB", false, () => Result)},
         };
         
-        private readonly Dictionary<int, UnityAction> m_PurchaseActions = new Dictionary<int, UnityAction>();
+        private readonly Dictionary<int, UnityAction> m_PurchaseActions = new();
 
         public override void RestorePurchases()
         {

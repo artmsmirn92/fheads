@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using Common.Managers.Advertising;
 using Common.Utils;
+using mazing.common.Runtime.Managers.IAP;
 using mazing.common.Runtime.Utils;
 using Zenject;
 
@@ -34,12 +35,16 @@ public class UniversalFunctions : MonoBehaviour
 {
     #region inject
     
-    private IAdsManager AdsManager { get; set; }
+    private IAdsManager  AdsManager  { get; set; }
+    private IShopManager ShopManager { get; set; }
 
     [Inject]
-    private void Inject(IAdsManager _AdsManager)
+    private void Inject(
+        IAdsManager   _AdsManager,
+         IShopManager _ShopManager)
     {
-        AdsManager = _AdsManager;
+        AdsManager  = _AdsManager;
+        ShopManager = _ShopManager;
     }
 
     #endregion
@@ -59,7 +64,6 @@ public class UniversalFunctions : MonoBehaviour
                 if (!scr.tM.isBetweenTimes)
                     RestartLevelCore();
             }
-                
         }  
     }
 
@@ -78,6 +82,14 @@ public class UniversalFunctions : MonoBehaviour
     public void ShowInterstitialAd()
     {
         AdsManager.ShowInterstitialAd();
+    }
+
+    public void ShowReviewGameDialogOnGame10()
+    {
+        int gameNum = PlayerPrefs.GetInt("GameNum");
+        if (++gameNum == 10)
+            ShopManager.RateGame();
+        PlayerPrefs.SetInt("GameNum", gameNum);
     }
 
     public string CurrentTime(int _Hour, int _Minute, int _Second)
@@ -200,7 +212,6 @@ public class UniversalFunctions : MonoBehaviour
         }
         return "";
     }
-
 
     public string ImpervumNumberString(int _Num)
     {

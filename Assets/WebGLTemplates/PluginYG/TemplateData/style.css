@@ -13,16 +13,53 @@ canvas {
 body {
     margin: 0;
 }
+/*#unity-container {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*	position: relative;*/
+/*}*/
+/*#unity-canvas {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background: {{{ BACKGROUND_COLOR }}};*/
+/*}*/
+
+/*#unity-container {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 100vh;*/
+/*}*/
+/*#unity-canvas {*/
+/*    max-width: calc(100vh * 11 / 16);*/
+/*    min-width: 0%;*/
+/*    max-height: 100%;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*background: {{{ BACKGROUND_COLOR }}};*/
+/*}*/
+
+/*#unity-container {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    width: 100vh;*/
+/*}*/
 #unity-container {
-    width: 100%;
-    height: 100%;
-	position: relative;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 #unity-canvas {
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-height: calc(100vw * 11 / 16); /* 16:11 aspect ratio */
     background: {{{ BACKGROUND_COLOR }}};
 }
+
 #loading-cover {
     position: absolute;
     top: 0;

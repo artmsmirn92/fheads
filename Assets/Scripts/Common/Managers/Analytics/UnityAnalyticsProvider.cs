@@ -9,6 +9,8 @@ using Unity.Services.Core;
 namespace Common.Managers.Analytics
 {
     public interface IUnityAnalyticsProvider : IAnalyticsProvider { }
+    
+    public class UnityAnalyticsProviderFake : AnalyticsProviderFake, IUnityAnalyticsProvider { }
 
     public class UnityAnalyticsProvider : AnalyticsProviderBase, IUnityAnalyticsProvider
     {

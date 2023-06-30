@@ -560,7 +560,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private void Controls()
 	{
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
 		ExecuteKeyUpDownAction(MoveLeft,     MoveLeftEnd,     KeyCode.A,           KeyCode.LeftArrow);
 		ExecuteKeyUpDownAction(MoveRight,    MoveRightEnd,    KeyCode.D,           KeyCode.RightArrow);
 		ExecuteKeyUpDownAction(Jump,         JumpEnd,         KeyCode.W,           KeyCode.UpArrow);

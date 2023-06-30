@@ -76,7 +76,7 @@ public class TimeManager : MonoBehaviour
 			isBetweenTimes = true;
 			scr.objLev.secondTimePanelAnim.gameObject.SetActive(true);
 			isNextTime = false;
-            scr.gM.currTimeScale = Time.timeScale;
+            scr.gM.CurrTimeScale = Time.timeScale;
 			Time.timeScale = 0;
 		}
 	}
@@ -102,7 +102,7 @@ public class TimeManager : MonoBehaviour
         isBetweenTimes = false;
         scr.objLev.secondTimePanelAnim.SetTrigger(Animator.StringToHash("back"));
         scr.objLev.secondTimePanelAnim.gameObject.SetActive(false);
-        Time.timeScale = scr.gM.currTimeScale;
+        Time.timeScale = scr.gM.CurrTimeScale;
         scr.timFr.IsFreezeActive = false;
         time0 = beginTime + 1;
         scr.pMov.restart = true;

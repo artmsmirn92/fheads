@@ -89,7 +89,7 @@ public class AllPrefsScript : MonoBehaviour
                 PlayerPrefs.SetInt("Tilt", 1);
                 PlayerPrefs.SetInt("ButtonsSize", 2);
                 PlayerPrefs.SetFloat("ButtonsCapacity", 0.5f);
-                PlayerPrefs.SetInt("SoundOn", 0);
+                PlayerPrefs.SetInt("SoundOn", 1);
                 PlayerPrefs.SetInt("PlayerLeague", 1);
                 PlayerPrefs.SetInt("EnemyLeague", 1);
                 PlayerPrefs.SetInt("EverydayReward", 1000);
@@ -355,24 +355,23 @@ public class AllPrefsScript : MonoBehaviour
 
 		for (int i = 0; i < openedPlayers.Length; i++)
 		{
-			str = "OpenedPlayers_" + i.ToString();
+			str = "OpenedPlayers_" + i;
 			openedPlayers[i] = PlayerPrefs.GetInt(str);
 		}
 
         for (int i = 0; i < openedPlayers_2.Length; i++)
         {
-            str = "OpenedPlayers_2_" + i.ToString();
+            str = "OpenedPlayers_2_" + i;
             openedPlayers_2[i] = PlayerPrefs.GetInt(str);
         }
 
-		isW = PlayerPrefs.GetInt("IsWin");
-		stadium = PlayerPrefs.GetInt("Stadium");
-        tribunes = PlayerPrefs.GetInt("Tribunes");
-		ballN = PlayerPrefs.GetInt("BallNumber");
+		isW             = PlayerPrefs.GetInt("IsWin");
+		stadium         = PlayerPrefs.GetInt("Stadium");
+        tribunes        = PlayerPrefs.GetInt("Tribunes");
+		ballN           = PlayerPrefs.GetInt("BallNumber");
         playerIndexRand = PlayerPrefs.GetInt("PlayerIndexRandom");
-		playerIndex = PlayerPrefs.GetInt("PlayerIndex");
-		enemyIndex = PlayerPrefs.GetInt("EnemyIndex");
-		
-		moneyWin = PlayerPrefs.GetInt("MoneyWin");
+		playerIndex     = PlayerPrefs.GetInt("PlayerIndex");
+		enemyIndex      = PlayerPrefs.GetInt("EnemyIndex");
+		moneyWin        = PlayerPrefs.GetInt("MoneyWin");
 	}
 }

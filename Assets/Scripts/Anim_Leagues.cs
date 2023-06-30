@@ -20,7 +20,7 @@ public class Anim_Leagues : MonoBehaviour
 
     public void LoadTournament(int _ind)
     {
-        scr.carMng.LoadTournament(_ind);
+        CareerManager.LoadTournament(_ind);
     }
 
     public void DisableTournamentMenu()

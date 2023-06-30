@@ -107,9 +107,9 @@ public class Objects_Menu : MonoBehaviour
     
     public string Android_Id()
     {
-        string android_id = "editor";
-
-#if UNITY_EDITOR
+        string android_id;
+#if !UNITY_EDITOR
+        android_id = "editor";
 #else
         AndroidJavaClass up = new AndroidJavaClass ("com.unity3d.player.UnityPlayer");
         AndroidJavaObject currentActivity = up.GetStatic<AndroidJavaObject> ("currentActivity");
@@ -125,7 +125,7 @@ public class Objects_Menu : MonoBehaviour
     {
         if (_IsOn)
         {
-            scr.gM._menues = Menues.menuCareer;
+            scr.gM.CurrentMenu = EMenu.MenuCareer;
             anim_MainMenu.SetTrigger(Animator.StringToHash("1"));
             obj_MenuTournament.SetActive(true);
         }
@@ -138,7 +138,7 @@ public class Objects_Menu : MonoBehaviour
     {
         if (_IsOn)
         {
-            scr.gM._menues = Menues.menuPlayers;
+            scr.gM.CurrentMenu = EMenu.MenuPlayers;
             anim_MainMenu.SetTrigger(Animator.StringToHash("1"));
             obj_MenuPlayers.SetActive(true);
         }
@@ -151,7 +151,7 @@ public class Objects_Menu : MonoBehaviour
     {
         if (_IsOn)
         {
-            scr.gM._menues = Menues.menuUpgrades;
+            scr.gM.CurrentMenu = EMenu.MenuUpgrades;
             obj_MenuUpgrades.SetActive(true);
         }
         scr.upgr.Ball_Choose(scr.upgr.curr_indBall);

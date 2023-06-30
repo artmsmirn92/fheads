@@ -62,7 +62,7 @@ public class TimeFreeze : MonoBehaviour
             freezeTime = !timFr ? freezeTime - Time.deltaTime : freezeTime;
 
             float freezeTime1 = Time.timeScale > 0f ?
-                freezeTime / Time.timeScale : freezeTime / scr.gM.currTimeScale;
+                freezeTime / Time.timeScale : freezeTime / scr.gM.CurrTimeScale;
 
             freezeTime_2 = Mathf.RoundToInt(freezeTime1 * 10f);
 

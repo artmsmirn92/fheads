@@ -13,6 +13,8 @@ namespace Common.Managers.Analytics
 {
     public interface IMyOwnAnalyticsProvider : IAnalyticsProvider { }
     
+    public class MyOwnAnalyticsProviderFake : AnalyticsProviderFake, IMyOwnAnalyticsProvider { }
+    
     public class MyOwnAnalyticsProvider : AnalyticsProviderBase, IMyOwnAnalyticsProvider
     {
         private string m_IdfaCached;
