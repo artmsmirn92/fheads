@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
 	{
         switch (CurrentMenu)
         {
-            case EMenu.MainMenu:     ExitGame();                            break;
+            case EMenu.MainMenu:                                 break;
             case EMenu.MenuCareer:   scr.objM.Menu_Tournaments(false); break;
             case EMenu.MenuPlayers:  scr.objM.Menu_Players(false);     break;
             case EMenu.MenuUpgrades: scr.objM.Menu_Upgrades(false);    break;
@@ -301,11 +301,6 @@ public class GameManager : MonoBehaviour
 		scr.objLev.quitPanel.SetActive(false);
 		scr.objLev.pauseMenuAnim.gameObject.SetActive(true);
 		scr.objLev.pauseMenuAnim.SetTrigger("call");
-	}
-	
-	private static void ExitGame()
-	{
-		Application.Quit();
 	}
 
 	#endregion

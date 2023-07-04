@@ -7,7 +7,7 @@ public class Objects_Menu : MonoBehaviour
 {
     #region constants
 
-    private const string WordExit = "ВЫХОД";
+    private const string WordExit = "";
     private const string WordBack = "НАЗАД";
 
     #endregion
@@ -57,6 +57,7 @@ public class Objects_Menu : MonoBehaviour
 
     private void Awake()
     {
+        text_ExitButton.text = WordExit;
         scr.upgr.curr_ind = 0;
         scr.upgr.curr_indBall = 0;
 

@@ -6776,12 +6776,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scr: {fileID: 1642430644}
-  quitPanel: 0
   pauseInLevel: 0
   gamePaused: 0
-  isNoAds: 0
-  _menues: 0
-  currTimeScale: 0
 --- !u!4 &357607560
 Transform:
   m_ObjectHideFlags: 0
@@ -19946,7 +19942,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 0.93
-  m_Text: "\u0412\u042B\u0425\u041E\u0414"
+  m_Text: "\u041D\u0410\u0417\u0410\u0414"
 --- !u!222 &868030477
 CanvasRenderer:
   m_ObjectHideFlags: 0
