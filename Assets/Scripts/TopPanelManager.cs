@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using RMAZOR.Helpers;
 using UnityEngine.UI;
 
 public class TopPanelManager : MonoBehaviour 
@@ -13,7 +14,7 @@ public class TopPanelManager : MonoBehaviour
 
     void Awake()
     {
-        moneyText.text = scr.univFunc.MoneyString(scr.alPrScr.moneyCount);
+        moneyText.text = FhUtils.MoneyString(scr.alPrScr.moneyCount);
     }
 
     void Update()
@@ -25,7 +26,7 @@ public class TopPanelManager : MonoBehaviour
         }
 
         if (scr.alPrScr.moneyCount != moneyCountPrev)
-            moneyText.text = scr.univFunc.MoneyString(scr.alPrScr.moneyCount);
+            moneyText.text = FhUtils.MoneyString(scr.alPrScr.moneyCount);
 
         moneyCountPrev = scr.alPrScr.moneyCount;
     }

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using RMAZOR.Helpers;
 
 
 [System.Serializable]
@@ -41,7 +42,7 @@ public class MoneyWinScript : MonoBehaviour
         if (!scr.objLev.isMoneyWinPopulate)
         {
             congrPan.SetActive (true);
-            moneyBankText.text = scr.univFunc.MoneyString(scr.alPrScr.moneyCount);
+            moneyBankText.text = FhUtils.MoneyString(scr.alPrScr.moneyCount);
             bankMoney = scr.alPrScr.moneyCount;
             DestroyEditorButtons ();
             //PopulateList ();
@@ -65,7 +66,7 @@ public class MoneyWinScript : MonoBehaviour
             GameObject bonusObj = Instantiate(sampleBonus) as GameObject;
             SampleBonus bonus = bonusObj.GetComponent<SampleBonus> ();
             bonus.award = item.award;
-            bonus.awardText.text = scr.univFunc.moneyString (item.award);
+            bonus.awardText.text = FhUtils.MoneyString (item.award);
             bonus.name0 = item.names[0];
 
             bonus._name.text = item.names[scr.univFunc.sysLang()];
@@ -111,7 +112,7 @@ public class MoneyWinScript : MonoBehaviour
                 if (TimeManager.resOfGame == 1 && scr.alPrScr.isRandGame == 0) 
                 {
                     sampBonus [i].award = scr.alPrScr.award;
-                    sampBonus [i].awardText.text = scr.univFunc.moneyString(sampBonus [i].award);
+                    sampBonus [i].awardText.text = FhUtils.MoneyString(sampBonus [i].award);
                 }
                 else
                 {
@@ -150,7 +151,7 @@ public class MoneyWinScript : MonoBehaviour
                 scr.objLev.totalPrice = sampBonus [i].award;
                 totalPrice = scr.objLev.totalPrice;
                 //Debug.Log ("totalPrice = " + scr.objLev.totalPrice);
-                sampBonus [i].awardText.text = scr.univFunc.moneyString (sampBonus [i].award);
+                sampBonus [i].awardText.text = FhUtils.MoneyString (sampBonus [i].award);
             }
         }
 
@@ -205,7 +206,7 @@ public class MoneyWinScript : MonoBehaviour
                         bankMoney += 1;
                     }
 
-                    moneyBankText.text = scr.univFunc.MoneyString(bankMoney);
+                    moneyBankText.text = FhUtils.MoneyString(bankMoney);
                 } 
                 else
                 {

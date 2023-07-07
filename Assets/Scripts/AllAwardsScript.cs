@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using RMAZOR.Helpers;
+using UnityEngine;
 using UnityEngine.UI;
 
 
@@ -69,7 +70,7 @@ public class AllAwardsScript : MonoBehaviour
         pansActive[0] = 1;
         //aw1MainText.alignment = TextAnchor.LowerCenter;
         aw0CountText.enabled = true;
-        aw0CountText.text = scr.univFunc.MoneyString (scr.everyDayReward.reward);
+        aw0CountText.text = FhUtils.MoneyString (scr.everyDayReward.reward);
     }
 
     /// <summary>
@@ -86,7 +87,7 @@ public class AllAwardsScript : MonoBehaviour
         {
             yesButObj.SetActive(true);
             prevText.text = "Вы хотите открыть эту лигу за " 
-                            + scr.univFunc.MoneyString(scr.carMng.lg_cost[scr.carMng._lgPrev]) 
+                            + FhUtils.MoneyString(scr.carMng.lg_cost[scr.carMng._lgPrev]) 
                             + "?";
         }
         else
@@ -95,7 +96,7 @@ public class AllAwardsScript : MonoBehaviour
             prevText.text = "У Вас недостаточно денег, чтобы открыть эту лигу. "
                             + " "
                             + "Вам нужно " 
-                            + scr.univFunc.MoneyString(scr.carMng.lg_cost[scr.carMng._lgPrev]);
+                            + FhUtils.MoneyString(scr.carMng.lg_cost[scr.carMng._lgPrev]);
         }
     }
     

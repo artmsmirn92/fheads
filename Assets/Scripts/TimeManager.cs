@@ -216,7 +216,7 @@ public class TimeManager : MonoBehaviour
 
 				if (matchPeriods == 0)
 				{
-					if (Score.score == Score.score1)
+					if (Score.PlayerScore == Score.EnemyScore)
 						GoldenGoal();
 					else
 						NoGoldenGoal();
@@ -260,7 +260,7 @@ public class TimeManager : MonoBehaviour
                 if (matchPeriods == 0)
                 {
                     scr.gM.MenuResult();
-                    resOfGame = Score.score > Score.score1 ? 1 : 3;
+                    resOfGame = Score.PlayerScore > Score.EnemyScore ? 1 : 3;
                     scr.gM.Rigidbodies_TimeScale_0();
                     scr.objLev.controlsCanvas.enabled = false;
 

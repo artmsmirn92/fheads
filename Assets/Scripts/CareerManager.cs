@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+using RMAZOR.Helpers;
 
 
 public class CareerManager : MonoBehaviour
@@ -147,7 +148,7 @@ public class CareerManager : MonoBehaviour
         scr.alPrScr.setMoney = true;
 
         scr.topPanMng.moneyText.text = 
-            scr.univFunc.MoneyString(scr.alPrScr.moneyCount);
+            FhUtils.MoneyString(scr.alPrScr.moneyCount);
         
         lg_UI_List[_lg].im_Cup.sprite = lg_UI_List[_lg].spr_CupGold;
         lg_UI_List[_lg].text_cupName_1.color = col_Gold;

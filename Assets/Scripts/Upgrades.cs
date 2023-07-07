@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using RMAZOR.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -182,7 +183,7 @@ public class Upgrades : MonoBehaviour
         scr.objM.Button_Sound();
 
         scr.topPanMng.moneyText.text = 
-            scr.univFunc.MoneyString(scr.alPrScr.moneyCount);
+            FhUtils.MoneyString(scr.alPrScr.moneyCount);
 
         curr_ind = _Idx;
         text_UpgradeName.text = upgrNames[_Idx];
@@ -243,7 +244,7 @@ public class Upgrades : MonoBehaviour
                         but_Refund.interactable = true;
                     }
 
-                    string price = scr.univFunc.MoneyString(prices_Speed[sticks]);
+                    string price = FhUtils.MoneyString(prices_Speed[sticks]);
                     text_BuyButton.text = $"{WordUpgrade}: {price}";
 
                     if (scr.alPrScr.moneyCount > prices_Speed[sticks])
@@ -289,7 +290,7 @@ public class Upgrades : MonoBehaviour
                         but_Refund.interactable = true;
                     }
 
-                    string price = scr.univFunc.MoneyString(prices_Speed[sticks]);
+                    string price = FhUtils.MoneyString(prices_Speed[sticks]);
                     text_BuyButton.text = $"{WordUpgrade}: {price}";
 
                     if (scr.alPrScr.moneyCount > prices_Speed[sticks])
@@ -334,7 +335,7 @@ public class Upgrades : MonoBehaviour
                         but_Refund.interactable = true;
                     }
 
-                    string price = scr.univFunc.MoneyString(prices_Speed[sticks]);
+                    string price = FhUtils.MoneyString(prices_Speed[sticks]);
                     text_BuyButton.text = $"{WordUpgrade}: {price}";
 
                     if (scr.alPrScr.moneyCount > prices_Speed[sticks])
@@ -379,7 +380,7 @@ public class Upgrades : MonoBehaviour
                         but_Refund.interactable = true;
                     }
 
-                    string price = scr.univFunc.MoneyString(prices_Speed[sticks]);
+                    string price = FhUtils.MoneyString(prices_Speed[sticks]);
                     text_BuyButton.text = $"{WordUpgrade}: {price}";
 
                     if (scr.alPrScr.moneyCount > prices_Speed[sticks])
@@ -424,7 +425,7 @@ public class Upgrades : MonoBehaviour
                         but_Refund.interactable = true;
                     }
 
-                    string price = scr.univFunc.MoneyString(prices_Speed[sticks]);
+                    string price = FhUtils.MoneyString(prices_Speed[sticks]);
                     text_BuyButton.text = $"{WordUpgrade}: {price}";
 
                     if (scr.alPrScr.moneyCount > prices_Speed[sticks])
@@ -472,7 +473,7 @@ public class Upgrades : MonoBehaviour
                         but_Refund.interactable = true;
                     }
 
-                    string price = scr.univFunc.MoneyString(prices_Speed[sticks]);
+                    string price = FhUtils.MoneyString(prices_Speed[sticks]);
                     text_BuyButton.text = $"{WordUpgrade}: {price}";
 
                     if (scr.alPrScr.moneyCount > prices_Speed[sticks])
@@ -525,7 +526,7 @@ public class Upgrades : MonoBehaviour
         else
         {
             text_BuyButton.text = WordBuy + ": " + 
-                scr.univFunc.MoneyString(_ballUpgr[_Idx].price);
+                FhUtils.MoneyString(_ballUpgr[_Idx].price);
 
             if (scr.alPrScr.moneyCount > _ballUpgr[_Idx].price)
             {
@@ -574,7 +575,7 @@ public class Upgrades : MonoBehaviour
                 }
                 else
                 {
-                    text_BuyButton.text     = WordBuy +": " + scr.univFunc.MoneyString(bkPrice);
+                    text_BuyButton.text     = WordBuy +": " + FhUtils.MoneyString(bkPrice);
                     text_BuyButton.color    = col_Stick0;
                     but_Buy.interactable    = true;
                     text_RefundButton.color = col_Stick1;

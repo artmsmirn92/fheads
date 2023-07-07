@@ -51,6 +51,7 @@ public class TimeFreeze : MonoBehaviour
         if (timFr || isHandleUnlim) EnableUnlimitedFreeze();
 
         float freezeTime1 = freezeTime / frTimeScale;
+        text_FreezeTime.enabled = true;
         text_FreezeTime.text = freezeTime1.ToString("N1") + "c";
     }
 
@@ -58,7 +59,6 @@ public class TimeFreeze : MonoBehaviour
     {
         if (IsFreezeActive)
         {
-            text_FreezeTime.enabled = freezeTime > 0f ? true : false;
             freezeTime = !timFr ? freezeTime - Time.deltaTime : freezeTime;
 
             float freezeTime1 = Time.timeScale > 0f ?
@@ -71,7 +71,7 @@ public class TimeFreeze : MonoBehaviour
 
             if (freezeTime <= 0)
             {
-                text_FreezeTime.enabled = false;
+                text_FreezeTime.text = "0.0c";
                 isStopFreezeTime = true;
                 IsFreezeActive = false;   
 

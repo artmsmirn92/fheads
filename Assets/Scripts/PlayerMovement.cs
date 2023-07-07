@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Lean.Common;
 using mazing.common.Runtime.Extensions;
+using RMAZOR.Helpers;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -118,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void Awake()
     {
-        text_Bank.text = scr.univFunc.MoneyString(scr.alPrScr.moneyCount);
+        text_Bank.text = FhUtils.MoneyString(scr.alPrScr.moneyCount);
         _rb = GetComponent<Rigidbody2D>();
 		HJPlayerLegTr = HJPlayerLeg.transform;
 		plSprTr = plSpr.transform;
@@ -257,11 +258,11 @@ public class PlayerMovement : MonoBehaviour
                 if (goalCheck == -1)
                 {
                     
-                    text_Bank.text = scr.univFunc.MoneyString(scr.alPrScr.moneyCount);
+                    text_Bank.text = FhUtils.MoneyString(scr.alPrScr.moneyCount);
                     //text_Money.text = "500$";
                     anim_PlusMoney.SetTrigger(Animator.StringToHash("0"));
                     scr.goalPanScr.RefereeAnimRight();
-                    Score.score++;
+                    Score.PlayerScore++;
 
                     if (!scr.practScr.isPractice)
                     {
@@ -273,7 +274,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else if (goalCheck == 1)
                 {
-                    Score.score1++;
+                    Score.EnemyScore++;
                     scr.goalPanScr.RefereeAnimLeft();
                     ballImpulseSide = 1f;
                 }
@@ -301,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			if (!restart && !freezeOnStart) 
 			{
-                scoreDiff = Score.score - Score.score1;
+                scoreDiff = Score.PlayerScore - Score.EnemyScore;
                 float velX = Force != 0 ? Force * maxSpeed : _rb.velocity.x;
                 float velY = jump ? jumpForce : _rb.velocity.y;
 
@@ -561,44 +562,46 @@ public class PlayerMovement : MonoBehaviour
 	private void Controls()
 	{
 #if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
-		ExecuteKeyUpDownAction(MoveLeft,     MoveLeftEnd,     KeyCode.A,           KeyCode.LeftArrow);
-		ExecuteKeyUpDownAction(MoveRight,    MoveRightEnd,    KeyCode.D,           KeyCode.RightArrow);
-		ExecuteKeyUpDownAction(Jump,         JumpEnd,         KeyCode.W,           KeyCode.UpArrow);
-		ExecuteKeyUpDownAction(Kick,         KickEnd,         KeyCode.LeftControl, KeyCode.RightControl);
-		ExecuteKeyUpDownAction(KickOverHead, KickOverHeadEnd, KeyCode.LeftShift,   KeyCode.RightShift);
+		ExecuteKeyUpDownAction(MoveLeft,  MoveLeftEnd, KeyCode.A, KeyCode.LeftArrow);
+		ExecuteKeyUpDownAction(MoveRight, MoveRightEnd,KeyCode.D, KeyCode.RightArrow);
+		ExecuteKeyUpDownAction(Jump,      JumpEnd,     KeyCode.W, KeyCode.UpArrow);
+		ExecuteKeyUpDownAction(Kick,      KickEnd,     KeyCode.F, KeyCode.LeftControl, KeyCode.RightControl, KeyCode.LeftCommand, KeyCode.RightCommand);
 		
-		ExecuteKeyUpDownAction(scr.timFr.TimeFreeze_StartOrStop, null, KeyCode.V);
+		ExecuteKeyUpDownAction(KickOverHead, KickOverHeadEnd,  
+			KeyCode.G, KeyCode.LeftShift, KeyCode.RightShift);
+		
+		ExecuteKeyUpDownAction(scr.timFr.TimeFreeze_StartOrStop, null,    KeyCode.T, KeyCode.V);
 #endif
 		
-#if UNITY_EDITOR
-		if (LeanInput.GetDown (KeyCode.R))
-			scr.objLev.LevelRestartInLevel();
-		if (LeanInput.GetDown (KeyCode.Y))
-		{
-			scr.gM.WinGame1();
-			scr.tM.matchPeriods = 1;
-		}
-		if (LeanInput.GetDown (KeyCode.L))
-		{
-			scr.gM.LooseGame();
-			scr.tM.matchPeriods = 1;
-		}
-		if (LeanInput.GetDown (KeyCode.T)) 
-		{
-			scr.gM.TieGame();
-			scr.tM.matchPeriods = 1;
-		}
-		if (LeanInput.GetDown(KeyCode.Alpha2))
-		{
-			Score.score++;
-			scr.scoreScr.SetScore();
-		}
-		if (LeanInput.GetDown(KeyCode.Alpha1)) 
-		{
-			Score.score1++;
-			scr.scoreScr.SetScore();
-		}
-#endif
+// #if UNITY_EDITOR
+// 		if (LeanInput.GetDown (KeyCode.R))
+// 			FhUtils.LevelRestartInLevel();
+// 		if (LeanInput.GetDown (KeyCode.Y))
+// 		{
+// 			scr.gM.WinGame1();
+// 			scr.tM.matchPeriods = 1;
+// 		}
+// 		if (LeanInput.GetDown (KeyCode.L))
+// 		{
+// 			scr.gM.LooseGame();
+// 			scr.tM.matchPeriods = 1;
+// 		}
+// 		if (LeanInput.GetDown (KeyCode.T)) 
+// 		{
+// 			scr.gM.TieGame();
+// 			scr.tM.matchPeriods = 1;
+// 		}
+// 		if (LeanInput.GetDown(KeyCode.Alpha2))
+// 		{
+// 			Score.PlayerScore++;
+// 			scr.scoreScr.SetScore();
+// 		}
+// 		if (LeanInput.GetDown(KeyCode.Alpha1)) 
+// 		{
+// 			Score.EnemyScore++;
+// 			scr.scoreScr.SetScore();
+// 		}
+// #endif
 	}
 
     public void KickOverHead()

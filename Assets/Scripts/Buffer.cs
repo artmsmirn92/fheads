@@ -299,22 +299,22 @@ public class Buffer : MonoBehaviour
 
     public void SetRandomData()
     {
-        int lg = Random.value < 0.5f ? 1 : 2;
+        int lg = Random.value < 0.8f ? 1 : 2;
         int max_ind = lg == 1? 
             scr.alPrScr.openedPlayers.Length : scr.alPrScr.openedPlayers_2.Length;
-        int ind = Mathf.FloorToInt(((float)max_ind - 0.01f) * Random.value);
+        int ind = Mathf.FloorToInt((max_ind - 0.01f) * Random.value);
 
         SetPlayerData(ind, lg);
 
-        is2Enemies = Random.value > 0.5f ? true : false;
-        oppType = Random.value > 0.5f ? EOpponentType.Bicycle : EOpponentType.Classic;
+        is2Enemies = Random.value < 0.2f;
+        oppType = Random.value < 0.2f ? EOpponentType.Bicycle : EOpponentType.Classic;
 
-        lg = Random.value < 0.5f ? 0 : 1;
+        lg = Random.value < 0.8f ? 0 : 1;
         SetEnemyData(0, lg);
 
         if (is2Enemies)
         {
-            lg = Random.value < 0.5f ? 0 : 1;
+            lg = Random.value < 0.2f ? 0 : 1;
             SetEnemyData(1, lg);
         }
     }

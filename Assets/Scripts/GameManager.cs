@@ -108,8 +108,8 @@ public class GameManager : MonoBehaviour
 		if (!IsLevelScene) 
 			return;
 		scr.tM.time0 = 2;
-		Score.score  = 6;
-		Score.score1 = 0;
+		Score.PlayerScore  = 6;
+		Score.EnemyScore = 0;
 		scr.scoreScr.SetScore();
 	}
 
@@ -117,8 +117,8 @@ public class GameManager : MonoBehaviour
 	{
 		if (!IsLevelScene) 
 			return;
-		Score.score  = 0;
-		Score.score1 = 3;
+		Score.PlayerScore  = 0;
+		Score.EnemyScore = 3;
 		scr.tM.time0 = 2;
 		scr.scoreScr.SetScore();
 	}
@@ -127,8 +127,8 @@ public class GameManager : MonoBehaviour
 	{
 		if (!IsLevelScene) 
 			return;
-		Score.score  = 1;
-		Score.score1 = 1;
+		Score.PlayerScore  = 1;
+		Score.EnemyScore = 1;
 		scr.tM.time0 = 2;
 		scr.scoreScr.SetScore();
 	}

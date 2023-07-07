@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System;
+using RMAZOR.Helpers;
 using UnityEngine.Events;
 
 [System.Serializable]
@@ -165,7 +166,7 @@ public class ProfileManager : MonoBehaviour
                     button.showcase_2.color = opnd ? scr.objM.col_Blue : scr.objM.col_Gray;
                     button.im_MoneyCoastShowcase.color = opnd ?
                         Color.clear : scr.objM.col_Gray;
-                    button.moneyCoast.text = scr.univFunc.MoneyString(moneyCoast[i]);
+                    button.moneyCoast.text = FhUtils.MoneyString(moneyCoast[i]);
                     button.moneyCoast.gameObject.SetActive(!CommonUtilsFheads.Int2Bool(scr.alPrScr.openedPlayers[i]));
                     button.plInd = j;
                     button.buttonInd = i;
@@ -216,7 +217,7 @@ public class ProfileManager : MonoBehaviour
                     button.showcase_2.color = opnd ? scr.objM.col_Blue : scr.objM.col_Gray;
                     button.im_MoneyCoastShowcase.color = opnd ?
                         Color.clear : scr.objM.col_Gray;
-                    button.moneyCoast.text = scr.univFunc.MoneyString(moneyCoast_2[i]);
+                    button.moneyCoast.text = FhUtils.MoneyString(moneyCoast_2[i]);
                     button.moneyCoast.gameObject.SetActive(!CommonUtilsFheads.Int2Bool(scr.alPrScr.openedPlayers_2[i]));
                     button.plInd = j;
                     button.buttonInd = i;
@@ -417,7 +418,7 @@ public class ProfileManager : MonoBehaviour
 		{
 			if (scr.alPrScr.moneyCount >= coast)
 			{
-                buyPlayerString = "Вы хотите купить этого игрока за " + scr.univFunc.MoneyString(coast) + "?";
+                buyPlayerString = "Вы хотите купить этого игрока за " + FhUtils.MoneyString(coast) + "?";
 				scr.allAw.yesButObj.SetActive(true);
 			} 
 			else
@@ -456,7 +457,7 @@ public class ProfileManager : MonoBehaviour
 
             if (scr.alPrScr.moneyCount >= coast)
             {
-                buyPlayerString = "Вы хотите купить этого игрока за " + scr.univFunc.MoneyString(coast) + "?";
+                buyPlayerString = "Вы хотите купить этого игрока за " + FhUtils.MoneyString(coast) + "?";
                 scr.allAw.yesButObj.SetActive(true);
             }
             else

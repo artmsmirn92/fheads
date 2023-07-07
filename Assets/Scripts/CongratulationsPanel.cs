@@ -21,11 +21,11 @@ public class CongratulationsPanel : MonoBehaviour
         {
             scr.alPrScr.winsTotal++;
 
-            if (Score.score1 == 0)
+            if (Score.EnemyScore == 0)
                 scr.alPrScr.winsNoConcGoals++;
         }
             
-		scoreText.text = Score.score1 + ":" + Score.score;
+		scoreText.text = Score.EnemyScore + ":" + Score.PlayerScore;
 		congrPanel.SetActive(true);
         Enemy.gameStop = true;
 		scr.gM.MenuResultBack ();

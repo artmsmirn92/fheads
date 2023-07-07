@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 using mazing.common.Runtime.Extensions;
+using RMAZOR.Helpers;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -79,9 +79,22 @@ public class Objects_Level : MonoBehaviour
     public StartPanelObjects startPanObjs;
     private float m_CapacityValue;
 
+    [Header("Other")] 
+    [SerializeField] private SpriteRenderer controlsTutorialOnPcImage;
+    [SerializeField] private GameObject[] controlButtons;
+    [SerializeField] private GameObject   buttonsCapacitySettingGo, buttonsSizeSettingGo;
 
-	void Awake()
-	{
+
+    private void Awake()
+    {
+        bool isMobile = FhUtils.IsOnMobile();
+        controlsTutorialOnPcImage.enabled = !isMobile;
+        foreach (var cb in controlButtons)
+            cb.SetActive(isMobile);
+
+        buttonsCapacitySettingGo.SetActive(isMobile);
+        buttonsSizeSettingGo.SetActive(isMobile);
+        
         if (scr.alPrScr.isRandGame == 1)
         {
             text_WatchVideo_0.gameObject.SetActive(false);
@@ -93,8 +106,8 @@ public class Objects_Level : MonoBehaviour
             int gameNum = scr.alPrScr.game + 1;
             text_GameNum.text = $"ИГРА {gameNum}";
             obj_RestartButon.SetActive(false);
-            int _canRestart = PlayerPrefs.GetInt("CanRestart");
-            scr.objLev.obj_RestartButon.SetActive(!CommonUtilsFheads.Int2Bool(_canRestart));
+            int canRestart = PlayerPrefs.GetInt("CanRestart");
+            scr.objLev.obj_RestartButon.SetActive(!CommonUtilsFheads.Int2Bool(canRestart));
         }
 
         startPanObjs.im_PlayerHead.sprite = scr.buf.plSpr;
@@ -131,15 +144,15 @@ public class Objects_Level : MonoBehaviour
 		quitPanel.SetActive (false);
         quitText.text = "Вы проиграете эту игру.\nПродолжить?";
                 
-        obj_BK_But1.SetActive(
-            CommonUtilsFheads.Int2Bool(
-                PlayerPrefs.GetInt("BycicleKick")));
+        // obj_BK_But1.SetActive(
+        //     CommonUtilsFheads.Int2Bool(
+        //         PlayerPrefs.GetInt("BycicleKick")));
 
         scrBar_ButtCap.value = PlayerPrefs.GetFloat("ButtonsCapacity");
         Buttons_Capacity();
 	}
 
-    void Start()
+    private void Start()
     {
         DeactivateMenusOnStart();
         //scr.levAudScr.EnableSound(1);
@@ -222,7 +235,7 @@ public class Objects_Level : MonoBehaviour
         PlayerPrefs.SetFloat("ButtonsCapacity", m_CapacityValue);
         foreach (var buttonIm in im_ContrButtons)
             buttonIm.color = buttonIm.color.SetA(m_CapacityValue);
-        scr.timFr.text_FreezeTime.color = scr.timFr.text_FreezeTime.color.SetA(m_CapacityValue);
+        // scr.timFr.text_FreezeTime.color = scr.timFr.text_FreezeTime.color.SetA(FhUtils.IsMobile() ? m_CapacityValue : 1f);
     }
 
     private void SetButtonSize(int _Size)
@@ -266,19 +279,4 @@ public class Objects_Level : MonoBehaviour
         scr.congrPan.DisableSomeObjects();
         scr.monWin.SetMoneyWin();
     }
-
-    public void FinishOrContinue()
-    {
-        if (TimeManager.resOfGame == 1)
-            ContinueTournament();
-        else
-            FinishTournament();
-    }
-
-    public void LevelRestartInLevel()
-    {
-        PlayerPrefs.SetInt("MenuTrigger_1", 1);
-        SceneManager.LoadScene("Level");
-    }
-
 }

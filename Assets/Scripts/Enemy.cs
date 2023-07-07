@@ -438,11 +438,11 @@ public class Enemy : MonoBehaviour
         else
         {
 
-            if (prevScoreDiff != Score.score - Score.score1)
+            if (prevScoreDiff != Score.PlayerScore - Score.EnemyScore)
             {
                 timDef = 0f;
 
-                if (Score.score - Score.score1 < 3)
+                if (Score.PlayerScore - Score.EnemyScore < 3)
                     isTimDef = true;
             }
 
@@ -476,7 +476,7 @@ public class Enemy : MonoBehaviour
                 {
                     //Debug.Log("Enemy Alive 1!");
 
-                    if (Score.score < Score.score1)
+                    if (Score.PlayerScore < Score.EnemyScore)
                     {
                         Defend();
                         //Debug.Log("Enemy Alive 2!");
@@ -489,7 +489,7 @@ public class Enemy : MonoBehaviour
                         {
                             //Debug.Log("Enemy Alive3!");
 
-                            if (Score.score - Score.score1 >= 3)
+                            if (Score.PlayerScore - Score.EnemyScore >= 3)
                                 Attack();
                             else
                             {
@@ -505,7 +505,7 @@ public class Enemy : MonoBehaviour
                 }
             }
 
-            prevScoreDiff = Score.score - Score.score1;
+            prevScoreDiff = Score.PlayerScore - Score.EnemyScore;
         }
     }
 
@@ -523,12 +523,12 @@ public class Enemy : MonoBehaviour
                     {
                         if (scr.tM.matchPeriods == 2)
                         {
-                            if (Score.score1 - Score.score - 3 >= 0)
+                            if (Score.EnemyScore - Score.PlayerScore - 3 >= 0)
                                 _rb.AddForce(new Vector2(-moveForce, 0));
                         }
                         else if (scr.tM.matchPeriods == 1)
                         {
-                            if (Score.score1 - Score.score >= 0)
+                            if (Score.EnemyScore - Score.PlayerScore >= 0)
                                 _rb.AddForce(new Vector2(-moveForce, 0));
                         }
                     }

@@ -223,9 +223,7 @@ public class AllPrefsScript : MonoBehaviour
             else if (LeanInput.GetDown(KeyCode.Alpha6))
                 scr.bonObjMan.SetBonusPosition(BonusType.bonusType.WatchVideo);
 
-            if (LeanInput.GetDown(KeyCode.Z))
-                scr.timFr.TimeFreeze_StartOrStop();
-            else if (LeanInput.GetDown(KeyCode.X))
+            if (LeanInput.GetDown(KeyCode.X))
                 scr.molnia.Lightnin_OnOff();
         }
 #endif
