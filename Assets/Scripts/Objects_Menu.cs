@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using mazing.common.Runtime.Utils;
 using UnityEngine.UI;
 
 
@@ -49,6 +50,7 @@ public class Objects_Menu : MonoBehaviour
     public Animator      anim_MenuPlayers;
     public GameObject    obj_MenuUpgrades;
     public Animator      anim_MenuUpgrades;
+    public Image         controlsTutorialImage;
 
 
     #endregion
@@ -57,6 +59,7 @@ public class Objects_Menu : MonoBehaviour
 
     private void Awake()
     {
+        controlsTutorialImage.enabled = !CommonUtils.IsOnMobileWebGl();
         text_ExitButton.text = WordExit;
         scr.upgr.curr_ind = 0;
         scr.upgr.curr_indBall = 0;

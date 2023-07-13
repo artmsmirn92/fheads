@@ -7,6 +7,7 @@ using Common.Utils;
 using mazing.common.Runtime.Exceptions;
 using mazing.common.Runtime.Managers.IAP;
 using mazing.common.Runtime.Utils;
+using YG;
 using Zenject;
 
 [System.Serializable]
@@ -54,10 +55,13 @@ public class UniversalFunctions : MonoBehaviour
         switch (scr.alPrScr.isRandGame)
         {
             case 0:
-                RestartLevelForAds();
+                RestartLevelCore();
                 break;
             case 1 when scr.tM.matchPeriods == 0 || !scr.tM.isBetweenTimes:
+                YandexGame.RewVideoShow(0);
                 RestartLevelCore();
+                break;
+            case 1:
                 break;
             default: throw new SwitchCaseNotImplementedException(scr.alPrScr.isRandGame);
         }

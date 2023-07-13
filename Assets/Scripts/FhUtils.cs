@@ -3,15 +3,6 @@ using UnityEngine.SceneManagement;
 
 public static class FhUtils
 {
-    #region dllimport
-
-#if !UNITY_EDITOR && UNITY_WEBGL
-    [System.Runtime.InteropServices.DllImport("__Internal")]
-    private static extern bool IsMobile();
-#endif
-
-    #endregion
-
     #region api
 
     public static void LevelRestartInLevel()
@@ -19,16 +10,7 @@ public static class FhUtils
         PlayerPrefs.SetInt("MenuTrigger_1", 1);
         SceneManager.LoadScene("Level");
     }
-        
-    public static bool IsOnMobile()
-    {
-        bool isMobile = true;
-#if !UNITY_EDITOR && UNITY_WEBGL
-        isMobile = IsMobile();
-#endif
-        return isMobile;
-    }
-        
+
     /// <summary>
     /// Convert money count in integer format to string. Example: 10000 = 10,000$
     /// </summary>

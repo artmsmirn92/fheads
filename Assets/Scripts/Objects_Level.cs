@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using mazing.common.Runtime.Extensions;
+using mazing.common.Runtime.Utils;
 using RMAZOR.Helpers;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -81,14 +82,16 @@ public class Objects_Level : MonoBehaviour
 
     [Header("Other")] 
     [SerializeField] private SpriteRenderer controlsTutorialOnPcImage;
+    [SerializeField] private Image        controlsTutorialOnPcImage2;
     [SerializeField] private GameObject[] controlButtons;
     [SerializeField] private GameObject   buttonsCapacitySettingGo, buttonsSizeSettingGo;
 
 
     private void Awake()
     {
-        bool isMobile = FhUtils.IsOnMobile();
+        bool isMobile = CommonUtils.IsOnMobileWebGl();
         controlsTutorialOnPcImage.enabled = !isMobile;
+        controlsTutorialOnPcImage2.enabled = !isMobile;
         foreach (var cb in controlButtons)
             cb.SetActive(isMobile);
 
@@ -235,7 +238,6 @@ public class Objects_Level : MonoBehaviour
         PlayerPrefs.SetFloat("ButtonsCapacity", m_CapacityValue);
         foreach (var buttonIm in im_ContrButtons)
             buttonIm.color = buttonIm.color.SetA(m_CapacityValue);
-        // scr.timFr.text_FreezeTime.color = scr.timFr.text_FreezeTime.color.SetA(FhUtils.IsMobile() ? m_CapacityValue : 1f);
     }
 
     private void SetButtonSize(int _Size)
