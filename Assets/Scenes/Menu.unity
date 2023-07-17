@@ -19906,7 +19906,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -162, y: -146}
+  m_AnchoredPosition: {x: -162, y: -144}
   m_SizeDelta: {x: 278.6041, y: 102.818115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &868030476
@@ -26254,7 +26254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -130.79999, y: -44}
+  m_AnchoredPosition: {x: -130.79999, y: -48}
   m_SizeDelta: {x: 254.5, y: 76.1033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1186767916
@@ -36480,7 +36480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9843138, g: 0.7803922, b: 0.25490198, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -38093,7 +38093,6 @@ MonoBehaviour:
   isLevelStarted: 0
   is1stPractice: 0
   isPractice: 0
-  plInd: 0
   plCntrInd: 0
   plSkillSpeed: 0
   plSkillKick: 0

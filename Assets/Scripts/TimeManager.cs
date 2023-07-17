@@ -117,7 +117,7 @@ public class TimeManager : MonoBehaviour
 	private void SetNameOfCurrentPeriod()
 	{
 		//int currentPeriod = periodsOnBegin - matchPeriods + 1;
-        scr.objLev.secontTimePanelText.text = "НАЧАТЬ ВТОРОГО ТАЙМ";
+        scr.objLev.secontTimePanelText.text = "НАЧАТЬ ВТОРОй ТАЙМ";
 	}
         
 	void Update ()
@@ -259,6 +259,7 @@ public class TimeManager : MonoBehaviour
             {
                 if (matchPeriods == 0)
                 {
+	                scr.univFunc.ShowInterstitialAd();
                     scr.gM.MenuResult();
                     resOfGame = Score.PlayerScore > Score.EnemyScore ? 1 : 3;
                     scr.gM.Rigidbodies_TimeScale_0();

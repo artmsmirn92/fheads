@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
@@ -48,23 +49,21 @@ public class UniversalFunctions : MonoBehaviour
 
     #endregion
 
+    #region engine methods
+
+    private void Start()
+    {
+        YandexGame.RewardVideoEvent -= OnRewardedVideoShown;
+        YandexGame.RewardVideoEvent += OnRewardedVideoShown;
+    }
+
+    #endregion
+
     #region api
 
     public void RestartLevel()
     {
-        switch (scr.alPrScr.isRandGame)
-        {
-            case 0:
-                RestartLevelCore();
-                break;
-            case 1 when scr.tM.matchPeriods == 0 || !scr.tM.isBetweenTimes:
-                YandexGame.RewVideoShow(0);
-                RestartLevelCore();
-                break;
-            case 1:
-                break;
-            default: throw new SwitchCaseNotImplementedException(scr.alPrScr.isRandGame);
-        }
+        YandexGame.RewVideoShow(0);
     }
     
     public void ShowInterstitialAd()
@@ -89,6 +88,12 @@ public class UniversalFunctions : MonoBehaviour
         if (AdsManager.RewardedAdReady)
             AdsManager.ShowRewardedAd(_OnReward: RestartLevelCore);
         else MazorCommonUtils.ShowAlertDialog("OOPS", "the ad didn't load. Try later...");
+    }
+    
+    private static void OnRewardedVideoShown(int _Id)
+    {
+        if (_Id == 0)
+            RestartLevelCore();
     }
 
     private static void RestartLevelCore()

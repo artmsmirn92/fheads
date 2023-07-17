@@ -100,8 +100,8 @@ public class Objects_Level : MonoBehaviour
         
         if (scr.alPrScr.isRandGame == 1)
         {
-            text_WatchVideo_0.gameObject.SetActive(false);
-            text_WatchVideo_1.gameObject.SetActive(false);
+            // text_WatchVideo_0.gameObject.SetActive(false);
+            // text_WatchVideo_1.gameObject.SetActive(false);
             text_GameNum.enabled = false;
         }
         else

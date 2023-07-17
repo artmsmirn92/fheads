@@ -565,12 +565,11 @@ public class PlayerMovement : MonoBehaviour
 		ExecuteKeyUpDownAction(MoveLeft,  MoveLeftEnd, KeyCode.A, KeyCode.LeftArrow);
 		ExecuteKeyUpDownAction(MoveRight, MoveRightEnd,KeyCode.D, KeyCode.RightArrow);
 		ExecuteKeyUpDownAction(Jump,      JumpEnd,     KeyCode.W, KeyCode.UpArrow);
-		ExecuteKeyUpDownAction(Kick,      KickEnd,     KeyCode.F, KeyCode.LeftControl, KeyCode.RightControl, KeyCode.LeftCommand, KeyCode.RightCommand);
+		ExecuteKeyUpDownAction(Kick,      KickEnd,     KeyCode.F);
 		
-		ExecuteKeyUpDownAction(KickOverHead, KickOverHeadEnd,  
-			KeyCode.G, KeyCode.LeftShift, KeyCode.RightShift);
+		ExecuteKeyUpDownAction(KickOverHead, KickOverHeadEnd, KeyCode.Z);
 		
-		ExecuteKeyUpDownAction(scr.timFr.TimeFreeze_StartOrStop, null,    KeyCode.T, KeyCode.V);
+		ExecuteKeyUpDownAction(scr.timFr.TimeFreeze_StartOrStop, null,    KeyCode.V);
 #endif
 		
 // #if UNITY_EDITOR
